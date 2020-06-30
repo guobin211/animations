@@ -15,6 +15,12 @@
     },
     {
       "path": "./projects/ngx-canvas/tsconfig.spec.json"
+    },
+    {
+      "path": "./projects/ngx-localforage/tsconfig.lib.json"
+    },
+    {
+      "path": "./projects/ngx-localforage/tsconfig.spec.json"
     }
 ]
 }

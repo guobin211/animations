@@ -21,6 +21,10 @@
       "ngx-canvas": [
         "dist/ngx-canvas/ngx-canvas",
         "dist/ngx-canvas"
+      ],
+      "ngx-localforage": [
+        "dist/ngx-localforage/ngx-localforage",
+        "dist/ngx-localforage"
       ]
     }
   }
