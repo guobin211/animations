@@ -147,6 +147,46 @@
           }
         }
       }
+    },
+    "ngx-canvas": {
+      "projectType": "library",
+      "root": "projects/ngx-canvas",
+      "sourceRoot": "projects/ngx-canvas/src",
+      "prefix": "lib",
+      "architect": {
+        "build": {
+          "builder": "@angular-devkit/build-ng-packagr:build",
+          "options": {
+            "tsConfig": "projects/ngx-canvas/tsconfig.lib.json",
+            "project": "projects/ngx-canvas/ng-package.json"
+          },
+          "configurations": {
+            "production": {
+              "tsConfig": "projects/ngx-canvas/tsconfig.lib.prod.json"
+            }
+          }
+        },
+        "test": {
+          "builder": "@angular-devkit/build-angular:karma",
+          "options": {
+            "main": "projects/ngx-canvas/src/test.ts",
+            "tsConfig": "projects/ngx-canvas/tsconfig.spec.json",
+            "karmaConfig": "projects/ngx-canvas/karma.conf.js"
+          }
+        },
+        "lint": {
+          "builder": "@angular-devkit/build-angular:tslint",
+          "options": {
+            "tsConfig": [
+              "projects/ngx-canvas/tsconfig.lib.json",
+              "projects/ngx-canvas/tsconfig.spec.json"
+            ],
+            "exclude": [
+              "**/node_modules/**"
+            ]
+          }
+        }
+      }
     }
   },
   "defaultProject": "animations"

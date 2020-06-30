@@ -7,13 +7,15 @@ import { CanvasContextComponent } from "./canvas-context/canvas-context.componen
 import { CanvasRendererComponent } from "./canvas-renderer/canvas-renderer.component";
 import { CanvasWebGlComponent } from "./canvas-web-gl/canvas-web-gl.component";
 import { CanvasImageComponent } from "./canvas-image/canvas-image.component";
+import { SharedModule } from "../shared/shared.module";
 
 
 @NgModule({
   declarations: [CanvasComponent, CanvasContextComponent, CanvasRendererComponent, CanvasWebGlComponent, CanvasImageComponent],
   imports: [
     CommonModule,
-    MCanvasRoutingModule
+    MCanvasRoutingModule,
+    SharedModule
   ]
 })
 export class MCanvasModule { }

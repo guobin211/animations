@@ -9,6 +9,12 @@
     },
     {
       "path": "./e2e/tsconfig.json"
+    },
+    {
+      "path": "./projects/ngx-canvas/tsconfig.lib.json"
+    },
+    {
+      "path": "./projects/ngx-canvas/tsconfig.spec.json"
     }
 ]
 }

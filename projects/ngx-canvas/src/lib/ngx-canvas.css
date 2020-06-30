@@ -1,0 +1,15 @@
+/**
+* index.css
+* @author GuoBin 2020-06-30
+*/
+.ngx-canvas {
+  width: 100%;
+  height: 100%;
+  display: block;
+}
+
+.canvas-inline {
+  width: 100%;
+  height: 100%;
+  display: block;
+}
