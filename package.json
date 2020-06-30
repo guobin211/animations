@@ -12,7 +12,7 @@
     "publish": "ng build --prod && ng deploy",
     "storybook": "start-storybook -p 6006",
     "build-storybook": "build-storybook",
-    "compodoc": "npx compodoc -p tsconfig.app.json -n Animations"
+    "compodoc": "bash scripts/compodoc.sh"
   },
   "private": true,
   "dependencies": {
