@@ -1,48 +1,69 @@
-.toolbar {
-  position: absolute;
+/*
+ * Sidebar
+ */
+
+.sidebar {
+  position: fixed;
   top: 0;
+  bottom: 0;
   left: 0;
-  right: 0;
-  height: 60px;
-  display: flex;
-  align-items: center;
-  background-color: #1976d2;
-  color: white;
-  font-weight: 600;
+  z-index: 100;
+  padding: 56px 0 0;
+  box-shadow: inset -1px 0 0 rgba(0, 0, 0, 0.1);
 }
-.spacer {
-  flex: 1;
+
+@media (max-width: 767.98px) {
+  .sidebar {
+    top: 5rem;
+  }
 }
-.toolbar img {
-  margin: 0 16px;
+
+.sidebar-sticky {
+  position: relative;
+  top: 0;
+  height: calc(100vh - 56px);
+  padding-top: 0.5rem;
+  overflow-x: hidden;
+  overflow-y: auto;
 }
-.toolbar #twitter-logo {
-  height: 40px;
-  margin: 0 16px;
+
+@supports ((position: -webkit-sticky) or (position: sticky)) {
+  .sidebar-sticky {
+    position: -webkit-sticky;
+    position: sticky;
+  }
 }
-.toolbar #twitter-logo:hover {
-  opacity: 0.8;
+
+.sidebar .nav-link {
+  font-weight: 500;
 }
-.content {
-  display: flex;
-  margin: 82px auto 32px;
-  padding: 0 16px;
-  max-width: 960px;
-  flex-direction: column;
-  align-items: center;
+
+.sidebar .nav-link .feather {
+  margin-right: 4px;
 }
-.card-container {
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: center;
-  margin-top: 16px;
+
+.sidebar .nav-link.active {
+  color: #007bff;
 }
-a,
-a:visited,
-a:hover {
-  color: #1976d2;
-  text-decoration: none;
+
+.sidebar .nav-link:hover .feather,
+.sidebar .nav-link.active .feather {
+  color: inherit;
 }
-a:hover {
-  color: #125699;
+
+/*
+ * Navbar
+ */
+.navbar-brand {
+  padding-top: 0.75rem;
+  padding-bottom: 0.75rem;
+  font-size: 1rem;
+}
+
+nav {
+  min-height: 56px;
+}
+
+a {
+  color: #343a40;
 }

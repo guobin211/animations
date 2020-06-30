@@ -2,11 +2,16 @@
   "extends": "./tsconfig.base.json",
   "compilerOptions": {
     "outDir": "./out-tsc/app",
-    "types": []
+    "types": [],
+    "typeRoots": [
+      "node_modules/@types"
+    ]
   },
   "files": [
     "src/main.ts",
-    "src/polyfills.ts"
+    "src/polyfills.ts",
+    "node_modules/@types/zepto/index.d.ts",
+    "src/typings.d.ts"
   ],
   "include": [
     "src/**/*.d.ts"
