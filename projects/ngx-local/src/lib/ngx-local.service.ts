@@ -1,22 +1,30 @@
 import { Injectable } from "@angular/core";
-import { NgxLocalforageModule } from "./ngx-localforage.module";
-import * as localforage from "localforage";
+import { LocalForage } from "./localforage";
 
 @Injectable({
-  providedIn: NgxLocalforageModule,
+  providedIn: "root",
 })
-export class NgxLocalforageService {
-  public localStorage: typeof localforage;
+export class NgxLocalService {
+   private $localStorage: LocalForage;
+
+  get localStorage(): LocalForage {
+    return this.$localStorage;
+  }
 
   constructor() {
-    if (!(window as any).localforage) {
-      this.asyncLoad()
+    if (!this.$localStorage) {
+      const local = (window as any).localforage;
+      if (!local) {
+        this.$asyncLoad()
         .then()
         .catch((e) => console.error(e));
+      } else {
+        this.$localStorage = local;
+      }
     }
   }
 
-  private asyncLoad(): Promise<typeof localforage> {
+  private $asyncLoad(): Promise<LocalForage> {
     return new Promise((resolve, reject) => {
       const script = document.createElement("script");
       script.src =
@@ -25,7 +33,7 @@ export class NgxLocalforageService {
       script.onload = () => {
         const local = (window as any).localforage;
         if (local) {
-          this.localStorage = local;
+          this.$localStorage = local;
           resolve(local);
         } else {
           reject("window.localforage not exist");

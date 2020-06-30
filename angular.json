@@ -188,38 +188,38 @@
         }
       }
     },
-    "ngx-localforage": {
+    "ngx-local": {
       "projectType": "library",
-      "root": "projects/ngx-localforage",
-      "sourceRoot": "projects/ngx-localforage/src",
+      "root": "projects/ngx-local",
+      "sourceRoot": "projects/ngx-local/src",
       "prefix": "lib",
       "architect": {
         "build": {
           "builder": "@angular-devkit/build-ng-packagr:build",
           "options": {
-            "tsConfig": "projects/ngx-localforage/tsconfig.lib.json",
-            "project": "projects/ngx-localforage/ng-package.json"
+            "tsConfig": "projects/ngx-local/tsconfig.lib.json",
+            "project": "projects/ngx-local/ng-package.json"
           },
           "configurations": {
             "production": {
-              "tsConfig": "projects/ngx-localforage/tsconfig.lib.prod.json"
+              "tsConfig": "projects/ngx-local/tsconfig.lib.prod.json"
             }
           }
         },
         "test": {
           "builder": "@angular-devkit/build-angular:karma",
           "options": {
-            "main": "projects/ngx-localforage/src/test.ts",
-            "tsConfig": "projects/ngx-localforage/tsconfig.spec.json",
-            "karmaConfig": "projects/ngx-localforage/karma.conf.js"
+            "main": "projects/ngx-local/src/test.ts",
+            "tsConfig": "projects/ngx-local/tsconfig.spec.json",
+            "karmaConfig": "projects/ngx-local/karma.conf.js"
           }
         },
         "lint": {
           "builder": "@angular-devkit/build-angular:tslint",
           "options": {
             "tsConfig": [
-              "projects/ngx-localforage/tsconfig.lib.json",
-              "projects/ngx-localforage/tsconfig.spec.json"
+              "projects/ngx-local/tsconfig.lib.json",
+              "projects/ngx-local/tsconfig.spec.json"
             ],
             "exclude": [
               "**/node_modules/**"

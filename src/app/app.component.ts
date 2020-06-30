@@ -1,5 +1,5 @@
 import { ChangeDetectionStrategy, Component, OnInit } from "@angular/core";
-import side from "./utils/side_data";
+import { SideListData } from "./models";
 
 @Component({
   selector: "app-root",
@@ -8,8 +8,8 @@ import side from "./utils/side_data";
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class AppComponent implements OnInit {
-  sideNav = side;
-  active = { ...side[0] };
+  sideNav = SideListData;
+  active = { ...SideListData[0] };
 
   isActive(el): boolean {
     return window.location.href.endsWith(el.path);

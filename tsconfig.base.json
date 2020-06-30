@@ -12,6 +12,9 @@
     "target": "es2015",
     "module": "es2020",
     "lib": [
+      "ES2015",
+      "ES2016",
+      "ES2017",
       "es2018",
       "es2019",
       "es2020",
@@ -25,6 +28,10 @@
       "ngx-localforage": [
         "dist/ngx-localforage/ngx-localforage",
         "dist/ngx-localforage"
+      ],
+      "ngx-local": [
+        "dist/ngx-local/ngx-local",
+        "dist/ngx-local"
       ]
     }
   }

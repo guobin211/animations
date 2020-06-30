@@ -3,7 +3,7 @@ import {
   Component,
   ElementRef,
   EventEmitter,
-  OnInit,
+  Output,
   ViewChild,
 } from "@angular/core";
 
@@ -16,12 +16,9 @@ import {
   `,
   styleUrls: ["./ngx-canvas.css"],
 })
-export class NgxCanvasComponent implements OnInit, AfterViewInit {
-  public canvasInit: EventEmitter<HTMLCanvasElement> = new EventEmitter<HTMLCanvasElement>();
+export class NgxCanvasComponent implements AfterViewInit {
+  @Output() canvasInit: EventEmitter<HTMLCanvasElement> = new EventEmitter<HTMLCanvasElement>();
   @ViewChild("canvasElement") canvasEl: ElementRef<HTMLCanvasElement>;
-  constructor() {}
-
-  ngOnInit(): void {}
 
   ngAfterViewInit(): void {
     this.canvasInit.emit(this.canvasEl.nativeElement);
