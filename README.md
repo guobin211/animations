@@ -1,2 +1,3 @@
-# animations
-Html5 Animations with Canvas or SVG
+# Animations
+
+## Html5 animation project
