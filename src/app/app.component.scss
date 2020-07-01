@@ -44,15 +44,19 @@
     overflow: auto;
     .main {
       display: flex;
-      flex: 1 1 auto;
+      flex-direction: row;
+      width: 100vw;
+      height: 100vh;
+
       .side-nav {
         width: 240px;
         height: 100vh;
         overflow: auto;
         border-right: 0.5px solid #f2f3f5;
+        display: block;
       }
       .page-view {
-        flex-grow: 1;
+        flex: 1;
         font-weight: 400;
         padding: 20px 30px;
       }

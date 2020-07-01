@@ -1,6 +1,6 @@
 import { NgModule } from "@angular/core";
 import { CommonModule } from "@angular/common";
-import { NgxCanvasModule, NgxCanvasService } from "ngx-canvas";
+import { NgxCanvasModule } from "ngx-canvas";
 import { NgxLocalModule, NgxLocalService } from "ngx-local";
 import { NgxPrismModule } from "ngx-prism";
 import { SideNavComponent } from "./side-nav/side-nav.component";
@@ -25,7 +25,6 @@ import { MatButtonModule } from "@angular/material/button";
     MatButtonModule
   ],
   providers: [
-    NgxCanvasService,
     NgxLocalService
   ],
   exports: [

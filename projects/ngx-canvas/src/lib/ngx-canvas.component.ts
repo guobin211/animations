@@ -12,7 +12,6 @@ import { AfterViewInit, Component, ElementRef, EventEmitter, Output, ViewChild }
 export class NgxCanvasComponent implements AfterViewInit {
   @Output() canvasInit: EventEmitter<HTMLCanvasElement> = new EventEmitter<HTMLCanvasElement>();
   @ViewChild("canvasElement") canvasEl: ElementRef<HTMLCanvasElement>;
-
   ngAfterViewInit(): void {
     this.canvasInit.emit(this.canvasEl.nativeElement);
   }

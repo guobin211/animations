@@ -40,15 +40,6 @@ body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
       padding: 0;
     }
   }
-  .row {
-    display: flex;
-    flex-direction: row;
-    height: calc(100vh - 220px);
-    .col {
-      flex: 1;
-      padding-right: 24px;
-    }
-  }
 }
 
 a {
@@ -69,4 +60,15 @@ a:hover {
 /* 正在点击的链接*/
 a:active {
   text-decoration: none;
+}
+
+.row {
+  display: flex;
+  flex-direction: row;
+  height: calc(100vh - 220px);
+}
+
+.col {
+  width: 50%;
+  padding-right: 24px;
 }
