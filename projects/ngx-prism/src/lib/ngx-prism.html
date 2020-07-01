@@ -1,0 +1,34 @@
+<div class="ngx-prism">
+  <pre class="line-numbers">
+    <code class="language-typescript" [innerHTML]="formatCode">
+    </code>
+  </pre>
+</div>
+
+<style>
+  .ngx-prism {
+    display: block;
+    overflow: auto;
+    height: 100%;
+    width: 100%
+  }
+
+  .ngx-prism::-webkit-scrollbar {
+    width: 5px;
+    height: 5px;
+  }
+
+  .ngx-prism::-webkit-scrollbar-thumb {
+    border-radius: 5px;
+    box-shadow: inset 0 0 5px rgba(0, 0, 0, 0.2);
+    -webkit-box-shadow: inset 0 0 5px rgba(0, 0, 0, 0.2);
+    background: rgba(0, 0, 0, 0.3);
+  }
+
+  .ngx-prism::-webkit-scrollbar-track {
+    box-shadow: inset 0 0 5px rgba(0, 0, 0, 0.2);
+    -webkit-box-shadow: inset 0 0 5px rgba(0, 0, 0, 0.2);
+    border-radius: 3px;
+    background: rgba(0, 0, 0, 0.1);
+  }
+</style>
