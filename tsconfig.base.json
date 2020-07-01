@@ -5,12 +5,20 @@
     "outDir": "./dist/out-tsc",
     "sourceMap": true,
     "declaration": false,
+    "allowJs": true,
     "downlevelIteration": true,
+    "emitDecoratorMetadata": true,
     "experimentalDecorators": true,
     "moduleResolution": "node",
     "importHelpers": true,
-    "target": "es2015",
+    "target": "ES2016",
     "module": "es2020",
+    "typeRoots": [
+      "node_modules/@types",
+      "node_modules/@types/zepto/index.d.ts",
+      "node_modules/@types/d3/index.d.ts",
+      "node_modules/localforage/typings/localforage.d.ts"
+    ],
     "lib": [
       "ES2015",
       "ES2016",
@@ -25,13 +33,13 @@
         "dist/ngx-canvas/ngx-canvas",
         "dist/ngx-canvas"
       ],
-      "ngx-localforage": [
-        "dist/ngx-localforage/ngx-localforage",
-        "dist/ngx-localforage"
-      ],
       "ngx-local": [
         "dist/ngx-local/ngx-local",
         "dist/ngx-local"
+      ],
+      "ngx-prism": [
+        "dist/ngx-prism/ngx-prism",
+        "dist/ngx-prism"
       ]
     }
   }

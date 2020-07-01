@@ -1,5 +1,7 @@
 {
-  "files": [],
+  "compilerOptions": {
+    "experimentalDecorators": true
+  },
   "references": [
     {
       "path": "./tsconfig.app.json"
@@ -21,6 +23,12 @@
     },
     {
       "path": "./projects/ngx-local/tsconfig.spec.json"
+    },
+    {
+      "path": "./projects/ngx-prism/tsconfig.lib.json"
+    },
+    {
+      "path": "./projects/ngx-prism/tsconfig.spec.json"
     }
-]
+  ]
 }

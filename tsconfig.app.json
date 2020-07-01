@@ -2,7 +2,6 @@
   "extends": "./tsconfig.base.json",
   "compilerOptions": {
     "outDir": "./out-tsc/app",
-    "experimentalDecorators": true,
     "typeRoots": [
       "node_modules/@types"
     ],
@@ -18,16 +17,12 @@
   },
   "files": [
     "src/main.ts",
-    "src/polyfills.ts",
-    "node_modules/@types/zepto/index.d.ts",
-    "node_modules/@types/d3/index.d.ts",
-    "node_modules/localforage/typings/localforage.d.ts"
+    "src/polyfills.ts"
   ],
   "include": [
-    "src/**/*.d.ts",
-    "src/typings.d.ts"
+    "src/**/*.d.ts"
   ],
   "exclude": [
     "**/*.stories.ts"
-  ]
+  ],
 }
