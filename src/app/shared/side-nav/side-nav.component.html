@@ -1,0 +1,9 @@
+<mat-list>
+  <a *ngFor="let el of listData; let i = index" class="mat-list-item" [routerLink]="el.path" routerLinkActive="active">
+    <div class="mat-list-item-content">
+      <div class="mat-ripple mat-list-item-ripple"></div>
+      <div class="mat-list-text"></div>
+      {{el.name}}
+    </div>
+  </a>
+</mat-list>

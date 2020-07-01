@@ -1,0 +1,20 @@
+@import "src/app/styles/@const";
+
+.active {
+  background: $indigo;
+
+  color: $light;
+  &:hover {
+    background: $indigo;
+
+  }
+}
+
+a {
+  display: block;
+  text-decoration: none;
+  color: $dark;
+  &:hover{
+    background: #eaeaea;
+  }
+}
