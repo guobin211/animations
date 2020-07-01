@@ -1,34 +1,35 @@
-<nav class="navbar navbar-dark bg-primary sticky-top flex-md-nowrap p-0 shadow">
-  <a class="navbar-brand col-md-3 col-lg-2 mr-0 px-3">Animations</a>
-  <input class="form-control w-100" type="text" placeholder="Search" aria-label="Search">
-  <ul class="navbar-nav px-3">
-    <li class="nav-item text-nowrap">
-      <a class="nav-link" href="#">Github</a>
-    </li>
-  </ul>
-</nav>
-
-<div class="container-fluid">
-  <div class="row">
-    <nav class="col-md-3 col-lg-2 d-md-block bg-light sidebar collapse">
-      <div class="sidebar-sticky pt-3">
-        <ul class="nav flex-column">
-          <li class="nav-item" *ngFor="let side of sideNav">
-            <a class="nav-link" [ngClass]="{'active': isActive(side)}" [routerLink]="side.path" (click)="active = side">
-              {{side.name}}
-            </a>
-          </li>
-        </ul>
+<div class="app">
+  <div class="top-bar">
+    <div class="safe">
+      <span>Animations</span>
+      <div>
+        <button mat-button>
+          <a>Story</a>
+        </button>
+        <button mat-button>
+          <a>Doc</a>
+        </button>
+        <button mat-button>
+          <a href="https://github.com/guobin211/animations" target="_blank" title="Github">Github</a>
+        </button>
       </div>
-    </nav>
-
-    <main role="main" class="col-md-9 ml-sm-auto col-lg-10 px-md-4">
-      <div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3 border-bottom">
-        <h1 class="h2">{{active.name}}</h1>
+    </div>
+  </div>
+  <div class="content scroll">
+    <div class="main">
+      <div class="side-nav scroll">
+        <app-side-nav></app-side-nav>
       </div>
-      <div class="table-responsive">
+      <div class="page-view scroll">
         <router-outlet></router-outlet>
       </div>
-    </main>
+    </div>
+    <div class="footer">
+      <footer class="docs-footer">
+        <div class="docs-footer-list">
+          Angular Animations Canvas
+        </div>
+      </footer>
+    </div>
   </div>
 </div>
