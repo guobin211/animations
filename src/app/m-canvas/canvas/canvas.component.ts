@@ -1,5 +1,8 @@
-import { AfterViewInit, ChangeDetectionStrategy, Component, OnDestroy } from "@angular/core";
+import { AfterViewInit, ChangeDetectionStrategy, Component, ElementRef, OnDestroy, ViewChild } from "@angular/core";
 import { CanvasContext, Context } from "../../core";
+import { Format } from "../../utils";
+
+const code = Format.fnToString([initAnimate, text, whiteCircle, buildCircle]);
 
 @Component({
   selector: "app-canvas",
@@ -11,6 +14,7 @@ export class CanvasComponent implements AfterViewInit, OnDestroy {
   private canvas: HTMLCanvasElement;
   private ctx: CanvasContext;
   private animate: number;
+  code = code;
 
   initCanvas(el: HTMLCanvasElement) {
     this.canvas = el;
@@ -19,7 +23,7 @@ export class CanvasComponent implements AfterViewInit, OnDestroy {
 
   ngAfterViewInit(): void {
     if (this.ctx) {
-      this.canvas.style.background = "#000";
+      this.canvas.style.background = "#323232";
       initAnimate(this.canvas, this.ctx, v => this.animate = v);
     }
   }
@@ -27,7 +31,6 @@ export class CanvasComponent implements AfterViewInit, OnDestroy {
   ngOnDestroy(): void {
     window.cancelAnimationFrame(this.animate);
   }
-
 }
 
 function initAnimate(canvas: HTMLCanvasElement, ctx: CanvasContext, callback: (v: number) => void) {
@@ -45,7 +48,6 @@ function initAnimate(canvas: HTMLCanvasElement, ctx: CanvasContext, callback: (v
     buildCircle(ctx.ctx, speed, w, h, rad);
     if (speed > 100) {
       speed = 0;
-      console.log("draw... > 100");
     }
     speed += 0.1;
   }
@@ -77,7 +79,7 @@ function buildCircle(context: CanvasRenderingContext2D, n: number, centerX: numb
   context.beginPath();
   context.strokeStyle = "#49f";
   context.lineWidth = 5;
-  context.arc(centerX, centerY, 100 , -Math.PI / 2, - Math.PI / 2 + n * rad, false);
+  context.arc(centerX, centerY, 100, -Math.PI / 2, -Math.PI / 2 + n * rad, false);
   context.stroke();
   context.closePath();
   context.restore();

@@ -8,7 +8,8 @@ import { CanvasImageComponent } from "./canvas-image/canvas-image.component";
 
 
 const canvasRoutes: Routes = [
-  {path: "", component: CanvasComponent},
+  {path: "", redirectTo: "canvas", pathMatch: "full"},
+  {path: "canvas", component: CanvasComponent},
   {path: "context", component: CanvasContextComponent},
   {path: "renderer", component: CanvasRendererComponent},
   {path: "webgl", component: CanvasWebGlComponent},
