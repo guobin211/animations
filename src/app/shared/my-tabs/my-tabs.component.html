@@ -1,11 +1,16 @@
 <mat-tab-group>
-  <mat-tab label="TypeScript">
-    <ng-content select=".ts"></ng-content>
-  </mat-tab>
-  <mat-tab label="Html">
-    <ng-content select=".html"></ng-content>
-  </mat-tab>
-  <mat-tab label="Scss">
-    <ng-content select=".scss"></ng-content>
-  </mat-tab>
+  <ng-template [ngIf]="useSlot">
+    <ng-content select=".slot"></ng-content>
+  </ng-template>
+  <ng-template [ngIf]="!useSlot">
+    <mat-tab label="TypeScript">
+      <ng-content select=".ts"></ng-content>
+    </mat-tab>
+    <mat-tab label="Html">
+      <ng-content select=".html"></ng-content>
+    </mat-tab>
+    <mat-tab label="Scss">
+      <ng-content select=".scss"></ng-content>
+    </mat-tab>
+  </ng-template>
 </mat-tab-group>
