@@ -2,39 +2,47 @@
  * Ball.ts
  * @author GuoBin 2020-06-30
  */
-import { CtxUtils } from "../utils";
+import { BaseBounds } from "../_base";
+
+export interface BallOptions {
+  rotation: number;
+  radius: number;
+  color: string;
+  x: number;
+  y: number;
+  vx: number;
+  vy: number;
+  mass: number;
+  scaleX: number;
+  scaleY: number;
+  lineWidth: number;
+}
 
 export class Ball {
-  private lineWidth: number;
-  private x: number;
-  private y: number;
-  private vx: number;
-  private rotation: number;
-  private mass: number;
-  private scaleX: number;
-  private vy: number;
-  private scaleY: number;
-  private name: string;
-  private color: string;
+  readonly name = "Ball";
+  rotation = 0;
+  radius = 40;
+  color = "#f08300";
+  x = 0;
+  y = 0;
+  vx = 0;
+  vy = 0;
+  mass = 1;
+  scaleX = 1;
+  scaleY = 1;
+  lineWidth = 1;
 
-  constructor(public radius: number = 40, color?: string) {
-    if (!color) {
-      color = "#f08300";
+  constructor(ball?: Partial<BallOptions>) {
+    if (ball) {
+      for (const ballKey in ball) {
+        if (ball.hasOwnProperty(ballKey)) {
+          this[ballKey] = ball[ballKey];
+        }
+      }
     }
-    this.x = 0;
-    this.y = 0;
-    this.vx = 0;
-    this.vy = 0;
-    this.rotation = 0;
-    this.mass = 1;
-    this.scaleX = 1;
-    this.scaleY = 1;
-    this.name = "";
-    this.color = CtxUtils.parseColor(color);
-    this.lineWidth = 1;
   }
 
-  draw(context: CanvasRenderingContext2D): void {
+  draw(context): void {
     context.save();
     context.translate(this.x, this.y);
     context.rotate(this.rotation);
@@ -50,12 +58,12 @@ export class Ball {
     context.restore();
   }
 
-  getBounds() {
+  getBounds(): BaseBounds {
     return {
       x: this.x - this.radius,
       y: this.y - this.radius,
       width: this.radius * 2,
-      height: this.radius * 2,
+      height: this.radius * 2
     };
   }
 }
