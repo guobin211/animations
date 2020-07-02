@@ -7,6 +7,7 @@ import { CanvasRendererComponent } from "./canvas-renderer/canvas-renderer.compo
 import { CanvasWebGlComponent } from "./canvas-web-gl/canvas-web-gl.component";
 import { CanvasImageComponent } from "./canvas-image/canvas-image.component";
 import { SharedModule } from "../shared/shared.module";
+import { BilliardsComponent } from "./billiards/billiards.component";
 
 @NgModule({
   declarations: [
@@ -15,6 +16,7 @@ import { SharedModule } from "../shared/shared.module";
     CanvasRendererComponent,
     CanvasWebGlComponent,
     CanvasImageComponent,
+    BilliardsComponent,
   ],
   imports: [CommonModule, MCanvasRoutingModule, SharedModule],
 })

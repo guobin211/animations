@@ -1,13 +1,14 @@
-import { AfterViewInit, Component, OnDestroy } from "@angular/core";
-import { BaseCanvas } from "../../decorator/BaseCanvas";
+import { AfterViewInit, ChangeDetectionStrategy, Component, OnDestroy } from "@angular/core";
+import { CanvasHelper } from "../../helper/CanvasHelper";
 import { tsCode } from "./code";
 
 @Component({
   selector: "app-canvas-context",
   templateUrl: "./canvas-context.component.html",
-  styleUrls: ["./canvas-context.component.scss"]
+  styleUrls: ["./canvas-context.component.scss"],
+  changeDetection: ChangeDetectionStrategy.OnPush,
 })
-export class CanvasContextComponent extends BaseCanvas implements AfterViewInit, OnDestroy {
+export class CanvasContextComponent extends CanvasHelper implements AfterViewInit, OnDestroy {
   // BaseCanvas ngOnDestroy() 清除动画
   anim: number;
   tsCode = tsCode;
@@ -16,20 +17,27 @@ export class CanvasContextComponent extends BaseCanvas implements AfterViewInit,
   }
 
   ngAfterViewInit(): void {
-    loadAnim(this.canvas, this.ctx.ctx, n => this.anim = n);
+    loadAnim(this.canvas, this.ctx.ctx, (n) => (this.anim = n));
+  }
+
+  ngOnDestroy(): void {
+    window.cancelAnimationFrame(this.anim);
   }
 }
 
-function loadAnim(canvas: HTMLCanvasElement,
-                  context: CanvasRenderingContext2D,
-                  callback: (n: number) => void) {
-  const w = canvas.width, h = canvas.height;
+function loadAnim(
+  canvas: HTMLCanvasElement,
+  context: CanvasRenderingContext2D,
+  callback: (n: number) => void
+) {
+  const w = canvas.width,
+    h = canvas.height;
   const words = `0123456789qwertyuiopasdfghjklzxcvbnm,./;\\[]QWERTYUIOP{}ASDFGHJHJKL:ZXCVBBNM<>?`;
   const clearColor = "rgba(0,0,0,.1)",
-      wordColor = "#33ff33",
-      wordsArr = words.split(""),
-      fontSize = 16,
-      col = w / fontSize;
+    wordColor = "#33ff33",
+    wordsArr = words.split(""),
+    fontSize = 16,
+    col = w / fontSize;
   const drops: number[] = [];
   for (let i = 0; i < col; i++) {
     drops[i] = 1;

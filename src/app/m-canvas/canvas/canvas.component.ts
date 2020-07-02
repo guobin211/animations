@@ -1,6 +1,7 @@
 import { AfterViewInit, ChangeDetectionStrategy, Component, OnDestroy } from "@angular/core";
-import { CanvasContext, Context } from "../../core";
+import { BaseContext } from "../../core";
 import { html, ts } from "./code";
+import { Canvas } from "../../core/_impl/Canvas";
 
 @Component({
   selector: "app-canvas",
@@ -10,14 +11,14 @@ import { html, ts } from "./code";
 })
 export class CanvasComponent implements AfterViewInit, OnDestroy {
   private canvas: HTMLCanvasElement;
-  private ctx: CanvasContext;
+  private ctx: BaseContext;
   private animate: number;
   ts = ts;
   html = html;
 
   initCanvas(el: HTMLCanvasElement) {
     this.canvas = el;
-    this.ctx = Context.initContext(el);
+    this.ctx = Canvas.initContext(el);
   }
 
   ngAfterViewInit(): void {
@@ -32,7 +33,7 @@ export class CanvasComponent implements AfterViewInit, OnDestroy {
   }
 }
 
-function initAnimate(canvas: HTMLCanvasElement, ctx: CanvasContext, callback: (v: number) => void) {
+function initAnimate(canvas: HTMLCanvasElement, ctx: BaseContext, callback: (v: number) => void) {
   let speed = 0.1;
   const rad = (Math.PI * 2) / 100;
   const w = ctx.width / 2;

@@ -1,13 +1,16 @@
 <div class="page">
   <div class="title">
-    <h1>Canvas Renderer 渲染器</h1>
+    <h1>Billiards 桌球运动</h1>
   </div>
   <div class="row">
     <div class="left">
       <lib-ngx-canvas (canvasInit)="initCanvas($event)"></lib-ngx-canvas>
+      <h1></h1>
+      <button mat-raised-button color="primary" (click)="reset()">Reset</button>
     </div>
     <div class="right">
       <app-my-tabs>
+        <lib-ngx-prism class="ts" [code]="tsCode"></lib-ngx-prism>
       </app-my-tabs>
     </div>
   </div>

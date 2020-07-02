@@ -5,14 +5,16 @@ import { CanvasContextComponent } from "./canvas-context/canvas-context.componen
 import { CanvasRendererComponent } from "./canvas-renderer/canvas-renderer.component";
 import { CanvasWebGlComponent } from "./canvas-web-gl/canvas-web-gl.component";
 import { CanvasImageComponent } from "./canvas-image/canvas-image.component";
+import { BilliardsComponent } from "./billiards/billiards.component";
 
-const canvasRoutes: Routes = [
+export const canvasRoutes: Routes = [
   { path: "", redirectTo: "canvas", pathMatch: "full" },
-  { path: "canvas", component: CanvasComponent },
-  { path: "context", component: CanvasContextComponent },
-  { path: "renderer", component: CanvasRendererComponent },
-  { path: "webgl", component: CanvasWebGlComponent },
-  { path: "image", component: CanvasImageComponent },
+  { path: "canvas", component: CanvasComponent, data: { name: "Canvas" } },
+  { path: "context", component: CanvasContextComponent, data: { name: "Canvas Context" } },
+  { path: "renderer", component: CanvasRendererComponent, data: { name: "Canvas Render" } },
+  { path: "image", component: CanvasImageComponent, data: { name: "Canvas Image" } },
+  { path: "webgl", component: CanvasWebGlComponent, data: { name: "Canvas WebGL" } },
+  { path: "bill", component: BilliardsComponent, data: { name: "桌球运动" } },
 ];
 
 @NgModule({
