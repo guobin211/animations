@@ -39,6 +39,7 @@ body {
     height: 68px;
     margin-bottom: 24px;
     border-bottom: 1px solid #eaeaec;
+
     h1 {
       height: 68px;
       line-height: 68px;
@@ -51,18 +52,22 @@ body {
 a {
   text-decoration: none;
 }
+
 /*正常的未被访问过的链接*/
 a:link {
   text-decoration: none;
 }
+
 /*已经访问过的链接*/
 a:visited {
   text-decoration: none;
 }
+
 /*鼠标划过(停留)的链接*/
 a:hover {
   text-decoration: none;
 }
+
 /* 正在点击的链接*/
 a:active {
   text-decoration: none;
@@ -73,7 +78,8 @@ a:active {
   flex-direction: row;
 }
 
-.col {
-  width: 50%;
-  padding-right: 24px;
+.right {
+  display: block;
+  padding-left: 30px;
+  flex: 1
 }

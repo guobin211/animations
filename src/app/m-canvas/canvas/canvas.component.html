@@ -3,10 +3,10 @@
     <h1>Canvas Detail</h1>
   </div>
   <div class="row">
-    <div class="col">
+    <div class="left">
       <lib-ngx-canvas (canvasInit)="initCanvas($event)"></lib-ngx-canvas>
     </div>
-    <div class="col">
+    <div class="right">
       <app-my-tabs>
         <lib-ngx-prism [code]="ts" class="ts"></lib-ngx-prism>
         <lib-ngx-prism [code]="html" class="html"></lib-ngx-prism>

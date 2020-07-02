@@ -1,30 +1,15 @@
-import { AfterViewInit, Component, OnDestroy } from "@angular/core";
-import { BaseCanvas } from "../../decorator/BaseCanvas";
-import { tsCode } from "./code";
+/**
+ * code.ts
+ * @author GuoBin 2020-07-02
+ */
 
-@Component({
-  selector: "app-canvas-context",
-  templateUrl: "./canvas-context.component.html",
-  styleUrls: ["./canvas-context.component.scss"]
-})
-export class CanvasContextComponent extends BaseCanvas implements AfterViewInit, OnDestroy {
-  // BaseCanvas ngOnDestroy() 清除动画
-  anim: number;
-  tsCode = tsCode;
-  constructor() {
-    super();
-  }
-
-  ngAfterViewInit(): void {
-    loadAnim(this.canvas, this.ctx.ctx, n => this.anim = n);
-  }
-}
-
+export const tsCode = `
+// callback() 用于清除动画定时器
 function loadAnim(canvas: HTMLCanvasElement,
                   context: CanvasRenderingContext2D,
                   callback: (n: number) => void) {
   const w = canvas.width, h = canvas.height;
-  const words = `0123456789qwertyuiopasdfghjklzxcvbnm,./;\\[]QWERTYUIOP{}ASDFGHJHJKL:ZXCVBBNM<>?`;
+  const words = \`0123456789qwertyuiopasdfghjklzxcvbnm,./;\\\\[]QWERTYUIOP{}ASDFGHJHJKL:ZXCVBBNM<>?\`;
   const clearColor = "rgba(0,0,0,.1)",
       wordColor = "#33ff33",
       wordsArr = words.split(""),
@@ -61,3 +46,5 @@ function loadAnim(canvas: HTMLCanvasElement,
     draw();
   })();
 }
+
+`;
