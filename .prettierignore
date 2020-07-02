@@ -19,3 +19,5 @@ LICENSE
 *.lock
 *.sh
 *.md
+*.html
+

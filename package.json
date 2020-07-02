@@ -8,7 +8,7 @@
     "builds": "npm run build-lib && ng build --prod",
     "test": "ng test",
     "lint": "ng lint --fix",
-    "format": "prettier --write src/**/*.ts src/**/*.scss projects/**/src/lib/*.ts",
+    "format": "prettier --write src",
     "e2e": "ng e2e",
     "publish": "ng deploy",
     "storybook": "start-storybook -p 6006",

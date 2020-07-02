@@ -17,8 +17,8 @@ export class Context {
     canvas.height = rect.height * dpr;
     const ctx = canvas.getContext("2d");
     ctx.scale(dpr, dpr);
-    const start: Point = {x: 0, y: 0};
-    const end = {x: canvas.width, y: canvas.height};
-    return {ctx, dpr, width: canvas.width, height: canvas.height, start, end};
+    const start: Point = { x: 0, y: 0 };
+    const end = { x: canvas.width, y: canvas.height };
+    return { ctx, dpr, width: canvas.width, height: canvas.height, start, end };
   }
 }

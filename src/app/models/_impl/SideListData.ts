@@ -5,9 +5,9 @@
 import { SideItem } from "../_base";
 
 export const SideListData: SideItem[] = [
-  {name: "Canvas", path: "/canvas/canvas"},
-  {name: "CanvasContext", path: "/canvas/context"},
-  {name: "CanvasRenderer", path: "/canvas/renderer"},
-  {name: "CanvasImage", path: "/canvas/image"},
-  {name: "CanvasWebGL", path: "/canvas/webgl"}
+  { name: "Canvas", path: "/canvas/canvas" },
+  { name: "CanvasContext", path: "/canvas/context" },
+  { name: "CanvasRenderer", path: "/canvas/renderer" },
+  { name: "CanvasImage", path: "/canvas/image" },
+  { name: "CanvasWebGL", path: "/canvas/webgl" },
 ];

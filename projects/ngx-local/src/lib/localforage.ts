@@ -51,7 +51,9 @@ interface LocalForageDbMethodsOptional {
   dropInstance: LocalForageDropInstanceFn;
 }
 
-interface LocalForageDriverDbMethods extends LocalForageDbMethodsCore, LocalForageDriverMethodsOptional {}
+interface LocalForageDriverDbMethods
+  extends LocalForageDbMethodsCore,
+    LocalForageDriverMethodsOptional {}
 
 // @ts-ignore
 type LocalForageDriverSupportFunc = () => Promise<boolean>;
@@ -90,13 +92,23 @@ export interface LocalForage extends LocalForageDbMethods {
 
   driver(): string;
 
-  setDriver(driver: string | string[], callback?: () => void, errorCallback?: (error: any) => void): Promise<void>;
+  setDriver(
+    driver: string | string[],
+    callback?: () => void,
+    errorCallback?: (error: any) => void
+  ): Promise<void>;
 
-  defineDriver(driver: LocalForageDriver, callback?: () => void, errorCallback?: (error: any) => void): Promise<void>;
+  defineDriver(
+    driver: LocalForageDriver,
+    callback?: () => void,
+    errorCallback?: (error: any) => void
+  ): Promise<void>;
 
   getDriver(driver: string): Promise<LocalForageDriver>;
 
-  getSerializer(callback?: (serializer: LocalForageSerializer) => void): Promise<LocalForageSerializer>;
+  getSerializer(
+    callback?: (serializer: LocalForageSerializer) => void
+  ): Promise<LocalForageSerializer>;
 
   supports(driverName: string): boolean;
 

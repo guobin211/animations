@@ -1,12 +1,14 @@
-import { AfterViewInit, ChangeDetectionStrategy, Component, OnDestroy } from "@angular/core";
-import { CanvasContext, Context } from "../../core";
-import { html, ts } from "./code";
+/**
+ * code.ts
+ * @author GuoBin 2020-07-02
+ */
 
+export const ts = `
 @Component({
   selector: "app-canvas",
   templateUrl: "./canvas.component.html",
   styleUrls: ["./canvas.component.scss"],
-  changeDetection: ChangeDetectionStrategy.OnPush,
+  changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class CanvasComponent implements AfterViewInit, OnDestroy {
   private canvas: HTMLCanvasElement;
@@ -23,7 +25,7 @@ export class CanvasComponent implements AfterViewInit, OnDestroy {
   ngAfterViewInit(): void {
     if (this.ctx) {
       this.canvas.style.background = "#323232";
-      initAnimate(this.canvas, this.ctx, (v) => (this.animate = v));
+      initAnimate(this.canvas, this.ctx, v => this.animate = v);
     }
   }
 
@@ -34,7 +36,7 @@ export class CanvasComponent implements AfterViewInit, OnDestroy {
 
 function initAnimate(canvas: HTMLCanvasElement, ctx: CanvasContext, callback: (v: number) => void) {
   let speed = 0.1;
-  const rad = (Math.PI * 2) / 100;
+  const rad = Math.PI * 2 / 100;
   const w = ctx.width / 2;
   const h = ctx.height / 2;
 
@@ -73,19 +75,42 @@ function whiteCircle(context: CanvasRenderingContext2D, centerX: number, centerY
   context.restore();
 }
 
-function buildCircle(
-  context: CanvasRenderingContext2D,
-  n: number,
-  centerX: number,
-  centerY: number,
-  rad: number
-) {
+function buildCircle(context: CanvasRenderingContext2D,
+                     n: number,
+                     centerX: number,
+                     centerY: number,
+                     rad: number) {
   context.save();
   context.beginPath();
   context.strokeStyle = "#49f";
   context.lineWidth = 5;
-  context.arc(centerX, centerY, 100, -Math.PI / 2, -Math.PI / 2 + n * rad, false);
+  context.arc(centerX,
+    centerY,
+    100,
+    -Math.PI / 2,
+    -Math.PI / 2 + n * rad,
+    false);
   context.stroke();
   context.closePath();
   context.restore();
 }
+
+`;
+
+export const html = `
+<div class="page">
+  <div class="title">
+    <h1>Canvas Detail</h1>
+  </div>
+  <div class="row">
+    <div class="col">
+      <lib-ngx-canvas (canvasInit)="initCanvas($event)"></lib-ngx-canvas>
+    </div>
+    <div class="col">
+      <app-my-tabs>
+        <lib-ngx-prism [code]="code" class="ts"></lib-ngx-prism>
+      </app-my-tabs>
+    </div>
+  </div>
+</div>
+`;

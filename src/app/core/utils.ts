@@ -63,7 +63,6 @@ export class CtxUtils {
       return color;
     }
   }
-
 }
 
 function animateCall(callback: () => void): number {
@@ -72,18 +71,24 @@ function animateCall(callback: () => void): number {
 
 function animationSetup(): void {
   if (!(window as any).requestAnimationFrame) {
-    (window as any).requestAnimationFrame = ((window as any).webkitRequestAnimationFrame ||
+    (window as any).requestAnimationFrame =
+      (window as any).webkitRequestAnimationFrame ||
       (window as any).mozRequestAnimationFrame ||
       (window as any).oRequestAnimationFrame ||
       (window as any).msRequestAnimationFrame ||
-      animateCall);
+      animateCall;
   }
   if (!(window as any).cancelAnimationFrame) {
-    (window as any).cancelAnimationFrame = ((window as any).cancelRequestAnimationFrame ||
-      (window as any).webkitCancelAnimationFrame || (window as any).webkitCancelRequestAnimationFrame ||
-      (window as any).mozCancelAnimationFrame || (window as any).mozCancelRequestAnimationFrame ||
-      (window as any).msCancelAnimationFrame || (window as any).msCancelRequestAnimationFrame ||
-      (window as any).oCancelAnimationFrame || (window as any).oCancelRequestAnimationFrame ||
-      (window as any).clearTimeout);
+    (window as any).cancelAnimationFrame =
+      (window as any).cancelRequestAnimationFrame ||
+      (window as any).webkitCancelAnimationFrame ||
+      (window as any).webkitCancelRequestAnimationFrame ||
+      (window as any).mozCancelAnimationFrame ||
+      (window as any).mozCancelRequestAnimationFrame ||
+      (window as any).msCancelAnimationFrame ||
+      (window as any).msCancelRequestAnimationFrame ||
+      (window as any).oCancelAnimationFrame ||
+      (window as any).oCancelRequestAnimationFrame ||
+      (window as any).clearTimeout;
   }
 }

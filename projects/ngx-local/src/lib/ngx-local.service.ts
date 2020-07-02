@@ -27,7 +27,8 @@ export class NgxLocalService {
   private $asyncLoad(): Promise<LocalForage> {
     return new Promise((resolve, reject) => {
       const script = document.createElement("script");
-      script.src = "https://raw.githubusercontent.com/localForage/localForage/master/dist/localforage.min.js";
+      script.src =
+        "https://raw.githubusercontent.com/localForage/localForage/master/dist/localforage.min.js";
       script.onerror = (e) => reject(e);
       script.onload = () => {
         const local = (window as any).localforage;

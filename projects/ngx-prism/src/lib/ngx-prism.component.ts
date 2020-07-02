@@ -17,14 +17,22 @@ export class NgxPrismComponent implements OnInit {
       fetch(this.src)
         .then((resp) => resp.text())
         .then((data) => {
-          res = (window as any).Prism.highlight(data, (window as any).Prism.languages.typescript, "typescript");
+          res = (window as any).Prism.highlight(
+            data,
+            (window as any).Prism.languages.typescript,
+            "typescript"
+          );
           this.formatCode = res;
           return;
         });
     }
 
     if (this.code) {
-      res = (window as any).Prism.highlight(this.code, (window as any).Prism.languages.typescript, "typescript");
+      res = (window as any).Prism.highlight(
+        this.code,
+        (window as any).Prism.languages.typescript,
+        "typescript"
+      );
       this.formatCode = res;
     }
   }

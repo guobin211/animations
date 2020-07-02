@@ -5,12 +5,13 @@ import { environment } from "../../../environments/environment";
 @Component({
   selector: "app-canvas-context",
   templateUrl: "./canvas-context.component.html",
-  styleUrls: ["./canvas-context.component.scss"]
+  styleUrls: ["./canvas-context.component.scss"],
 })
 export class CanvasContextComponent extends BaseCanvas implements AfterViewInit, OnDestroy {
-
   code = "";
-  constructor() {super(); }
+  constructor() {
+    super();
+  }
 
   ngAfterViewInit(): void {
     // todo

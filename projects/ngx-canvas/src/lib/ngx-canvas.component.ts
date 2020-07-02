@@ -1,4 +1,11 @@
-import { AfterViewInit, Component, ElementRef, EventEmitter, Output, ViewChild } from "@angular/core";
+import {
+  AfterViewInit,
+  Component,
+  ElementRef,
+  EventEmitter,
+  Output,
+  ViewChild,
+} from "@angular/core";
 
 @Component({
   selector: "lib-ngx-canvas",

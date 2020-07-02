@@ -14,12 +14,8 @@ import { SharedModule } from "../shared/shared.module";
     CanvasContextComponent,
     CanvasRendererComponent,
     CanvasWebGlComponent,
-    CanvasImageComponent],
-  imports: [
-    CommonModule,
-    MCanvasRoutingModule,
-    SharedModule
-  ]
+    CanvasImageComponent,
+  ],
+  imports: [CommonModule, MCanvasRoutingModule, SharedModule],
 })
-export class MCanvasModule {
-}
+export class MCanvasModule {}

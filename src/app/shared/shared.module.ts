@@ -22,11 +22,9 @@ import { MatButtonModule } from "@angular/material/button";
     MatListModule,
     MatTabsModule,
     MatGridListModule,
-    MatButtonModule
+    MatButtonModule,
   ],
-  providers: [
-    NgxLocalService
-  ],
+  providers: [NgxLocalService],
   exports: [
     NgxCanvasModule,
     NgxPrismModule,
@@ -36,7 +34,7 @@ import { MatButtonModule } from "@angular/material/button";
     MatListModule,
     MatTabsModule,
     MatGridListModule,
-    MatButtonModule]
+    MatButtonModule,
+  ],
 })
-export class SharedModule {
-}
+export class SharedModule {}

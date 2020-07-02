@@ -6,18 +6,17 @@ import { CanvasRendererComponent } from "./canvas-renderer/canvas-renderer.compo
 import { CanvasWebGlComponent } from "./canvas-web-gl/canvas-web-gl.component";
 import { CanvasImageComponent } from "./canvas-image/canvas-image.component";
 
-
 const canvasRoutes: Routes = [
-  {path: "", redirectTo: "canvas", pathMatch: "full"},
-  {path: "canvas", component: CanvasComponent},
-  {path: "context", component: CanvasContextComponent},
-  {path: "renderer", component: CanvasRendererComponent},
-  {path: "webgl", component: CanvasWebGlComponent},
-  {path: "image", component: CanvasImageComponent},
+  { path: "", redirectTo: "canvas", pathMatch: "full" },
+  { path: "canvas", component: CanvasComponent },
+  { path: "context", component: CanvasContextComponent },
+  { path: "renderer", component: CanvasRendererComponent },
+  { path: "webgl", component: CanvasWebGlComponent },
+  { path: "image", component: CanvasImageComponent },
 ];
 
 @NgModule({
   imports: [RouterModule.forChild(canvasRoutes)],
-  exports: [RouterModule]
+  exports: [RouterModule],
 })
-export class MCanvasRoutingModule { }
+export class MCanvasRoutingModule {}
