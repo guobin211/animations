@@ -1,16 +1,17 @@
-import { Point } from "./_base";
+import { BasePoint } from "../_base";
+import { BaseCapture } from "../_base/BaseCapture";
 
 /**
  * capture.ts 事件捕获
  * @author GuoBin 2020-06-30
  */
-export class Capture {
+export class Capture implements BaseCapture {
   /**
    * 捕获鼠标坐标
    * @param element HTMLElement
    */
-  static capMouse(element: HTMLElement): Point {
-    const mouse: Point = { x: 0, y: 0 };
+  capMouse(element: HTMLElement): BasePoint {
+    const mouse: BasePoint = { x: 0, y: 0 };
     element.addEventListener(
       "mousemove",
       (event: MouseEvent) => {
@@ -30,9 +31,5 @@ export class Capture {
       false
     );
     return mouse;
-  }
-
-  static capTouch(element: HTMLElement) {
-    // todo
   }
 }
