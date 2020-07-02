@@ -146,7 +146,8 @@
     "use-pipe-transform-interface": true,
     "one-variable-per-declaration": false,
     "no-bitwise": false,
-    "prefer-const": false
+    "prefer-const": false,
+    "prefer-for-of": false
   },
   "rulesDirectory": [
     "codelyzer"

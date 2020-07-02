@@ -7,7 +7,8 @@
       "projectType": "application",
       "schematics": {
         "@schematics/angular:component": {
-          "style": "scss"
+          "style": "scss",
+          "spec": false
         },
         "@schematics/angular:class": {
           "spec": false
@@ -24,7 +25,9 @@
         "@schematics/angular:pipe": {
           "spec": false
         },
-        "@schematics/angular:service": {}
+        "@schematics/angular:service": {
+          "spec": false
+        }
       },
       "root": "",
       "sourceRoot": "src",
