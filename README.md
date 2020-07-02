@@ -8,6 +8,8 @@
 
 ## 预览
 
+<img src="https://guobin211.github.io/animations/blob/master/_static/bg1.png" width="600px" alt
+="preview"/>
 
 ## 项目结构
 
