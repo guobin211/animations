@@ -12,7 +12,6 @@
     "importHelpers": true,
     "target": "ES2016",
     "module": "es2020",
-    "composite": true,
     "typeRoots": [
       "node_modules/@types",
       "node_modules/@types/zepto/index.d.ts",
