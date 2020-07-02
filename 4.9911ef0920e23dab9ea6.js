@@ -1,0 +1,1 @@
+(window.webpackJsonp=window.webpackJsonp||[]).push([[4],{Pfb2:function(n,o,t){"use strict";t.r(o),t.d(o,"MCanvasModule",(function(){return u}));var r=t("ofXK"),e=t("t2sP"),s=t("PCNd"),a=t("fXoL");let u=(()=>{class n{}return n.\u0275mod=a.Pb({type:n}),n.\u0275inj=a.Ob({factory:function(o){return new(o||n)},imports:[[r.b,e.a,s.a]]}),n})()}}]);
