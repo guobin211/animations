@@ -1,5 +1,6 @@
 import { AfterViewInit, Component, OnDestroy } from "@angular/core";
 import { BaseCanvas } from "../../decorator/BaseCanvas";
+import { environment } from "../../../environments/environment";
 
 @Component({
   selector: "app-canvas-context",
