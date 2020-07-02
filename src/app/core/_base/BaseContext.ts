@@ -1,10 +1,10 @@
 /**
- * CanvasContext.ts canvas context 上下文
+ * BaseContext.ts canvas context 上下文
  * @author GuoBin 2020-06-30
  */
-import { Point } from "./Point";
+import { BasePoint } from "./BasePoint";
 
-export interface CanvasContext {
+export interface BaseContext {
   /**
    * context
    */
@@ -17,14 +17,6 @@ export interface CanvasContext {
    * canvas height
    */
   height: number;
-  /**
-   * canvas left-top
-   */
-  start: Point;
-  /**
-   * canvas right-bottom
-   */
-  end: Point;
   /**
    * window devicePixelRatio
    */
