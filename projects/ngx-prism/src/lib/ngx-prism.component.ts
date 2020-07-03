@@ -6,34 +6,48 @@ import { ChangeDetectionStrategy, Component, Input, OnInit } from "@angular/core
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class NgxPrismComponent implements OnInit {
-  @Input() src: string;
+  @Input() lang: string;
   @Input() code: string;
 
-  formatCode: string;
-
+  formatCode = "";
+  languageClass = "language-typescript";
   ngOnInit(): void {
     let res = "";
-    if (this.src) {
-      fetch(this.src)
-        .then((resp) => resp.text())
-        .then((data) => {
-          res = (window as any).Prism.highlight(
-            data,
+    switch (this.lang) {
+      case "ts":
+        res = (window as any).Prism.highlight(
+            this.code,
             (window as any).Prism.languages.typescript,
             "typescript"
-          );
-          this.formatCode = res;
-          return;
-        });
-    }
-
-    if (this.code) {
-      res = (window as any).Prism.highlight(
-        this.code,
-        (window as any).Prism.languages.typescript,
-        "typescript"
-      );
-      this.formatCode = res;
+        );
+        this.formatCode = res;
+        break;
+      case "css":
+        this.languageClass = "language-css";
+        res = (window as any).Prism.highlight(
+            this.code,
+            (window as any).Prism.languages.css,
+            "css"
+        );
+        this.formatCode = res;
+        break;
+      case "html":
+        this.languageClass = "language-html";
+        res = (window as any).Prism.highlight(
+            this.code,
+            (window as any).Prism.languages.html,
+            "html"
+        );
+        this.formatCode = res;
+        break;
+      default:
+        res = (window as any).Prism.highlight(
+            this.code,
+            (window as any).Prism.languages.typescript,
+            "typescript"
+        );
+        this.formatCode = res;
+        break;
     }
   }
 }
