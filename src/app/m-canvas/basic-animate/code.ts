@@ -1,37 +1,9 @@
-import { AfterViewInit, Component, OnInit } from "@angular/core";
-import { AutoCanvasComponent } from "../../shared/auto-canvas/auto-canvas.component";
-import { CallBackNum, R2D } from "../../../typings";
-import { TS_CODE } from "./code";
+/**
+ * code.ts
+ * @author GuoBin 2020-07-03
+ */
 
-interface ImageObject {
-  sun: HTMLImageElement;
-  moon: HTMLImageElement;
-  earth: HTMLImageElement;
-}
-
-@Component({
-  selector: "app-basic-animate",
-  templateUrl: "./basic-animate.component.html",
-  styleUrls: ["./basic-animate.component.scss"]
-})
-export class BasicAnimateComponent extends AutoCanvasComponent implements OnInit, AfterViewInit {
-  image: ImageObject;
-
-  constructor() {
-    super();
-    this.tsCode = TS_CODE;
-  }
-
-  ngOnInit(): void {
-    this.image = init();
-  }
-
-  ngAfterViewInit() {
-    this.canvas.style.background = "#000";
-    loadAnimate(this.ctx, n => this.anim = n, this.image);
-  }
-}
-
+export const TS_CODE = `
 /**
  * 加载image资源
  */
@@ -56,8 +28,6 @@ function loadAnimate(ctx: R2D, call: CallBackNum, img: ImageObject) {
 
   // 绘画逻辑
   function draw() {
-    ctx.save();
-    ctx.translate(100, 100);
     ctx.globalCompositeOperation = "destination-over";
     ctx.clearRect(0, 0, 300, 300);
     ctx.fillStyle = "rgba(0,0,0,0.4)";
@@ -83,7 +53,6 @@ function loadAnimate(ctx: R2D, call: CallBackNum, img: ImageObject) {
     ctx.arc(150, 150, 105, 0, Math.PI * 2, false);
     ctx.stroke();
     ctx.drawImage(sun, 0, 0, 300, 300);
-    ctx.restore();
   }
 
   // loop动画
@@ -96,3 +65,4 @@ function loadAnimate(ctx: R2D, call: CallBackNum, img: ImageObject) {
   animate();
 }
 
+`;
