@@ -12,7 +12,9 @@ import { BallAnimComponent } from "./ball-anim/ball-anim.component";
 import { BezierComponent } from "./bezier/bezier.component";
 import { RoundProgressComponent } from "./round-progress/round-progress.component";
 import { ScrollTextComponent } from "./scroll-text/scroll-text.component";
-import { CanvasTransformComponent } from './canvas-transform/canvas-transform.component';
+import { CanvasTransformComponent } from "./canvas-transform/canvas-transform.component";
+import { BasicAnimateComponent } from "./basic-animate/basic-animate.component";
+import { ClockComponent } from "./clock/clock.component";
 
 @NgModule({
   declarations: [
@@ -27,6 +29,8 @@ import { CanvasTransformComponent } from './canvas-transform/canvas-transform.co
     RoundProgressComponent,
     ScrollTextComponent,
     CanvasTransformComponent,
+    BasicAnimateComponent,
+    ClockComponent,
   ],
   imports: [CommonModule, MCanvasRoutingModule, SharedModule],
 })

@@ -4,7 +4,7 @@ import { Canvas } from "../../core/_impl/Canvas";
 
 @Component({
   selector: "app-auto-canvas",
-  template: ""
+  template: "",
 })
 export class AutoCanvasComponent implements OnDestroy {
   ctx: R2D;

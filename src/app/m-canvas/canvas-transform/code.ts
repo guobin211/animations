@@ -54,7 +54,6 @@ function drawRect(ctx: R2D) {
 }
 `;
 
-
 export const HTML_CODE = `
 <div class="page">
   <div class="title">

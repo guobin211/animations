@@ -8,7 +8,6 @@ import { TS_CODE } from "./code";
 @Component({
   selector: "app-ball-anim",
   templateUrl: "./ball-anim.component.html",
-  styleUrls: ["./ball-anim.component.scss"],
 })
 export class BallAnimComponent extends CanvasHelper implements AfterViewInit, OnDestroy {
   tsCode = TS_CODE;

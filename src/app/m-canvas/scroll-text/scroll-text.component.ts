@@ -5,7 +5,6 @@ import { HTML_CODE, TS_CODE } from "./code";
 @Component({
   selector: "app-scroll-text",
   templateUrl: "./scroll-text.component.html",
-  styleUrls: ["./scroll-text.component.scss"],
 })
 export class ScrollTextComponent extends CanvasHelper implements AfterViewInit, OnDestroy {
   anim: number;

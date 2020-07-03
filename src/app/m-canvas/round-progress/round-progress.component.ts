@@ -6,7 +6,6 @@ import { HTML_CODE, TS_CODE } from "./code";
 @Component({
   selector: "app-round-progress",
   templateUrl: "./round-progress.component.html",
-  styleUrls: ["./round-progress.component.scss"],
 })
 export class RoundProgressComponent implements AfterViewInit, OnDestroy {
   private canvas: HTMLCanvasElement;

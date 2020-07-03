@@ -6,7 +6,7 @@ import { HTML_CODE, TS_CODE } from "./code";
 @Component({
   selector: "app-canvas-image",
   templateUrl: "./canvas-image.component.html",
-  styleUrls: ["./canvas-image.component.scss"]
+  styleUrls: ["./canvas-image.component.scss"],
 })
 export class CanvasImageComponent implements AfterViewInit {
   @ViewChild("canvasElementRef") canvasElRef: ElementRef<HTMLCanvasElement>;
@@ -69,8 +69,7 @@ function drawClip(ctx: R2D) {
   for (let j = 1; j < 50; j++) {
     ctx.save();
     ctx.fillStyle = "#fff";
-    ctx.translate(75 - Math.floor(Math.random() * 150),
-        75 - Math.floor(Math.random() * 150));
+    ctx.translate(75 - Math.floor(Math.random() * 150), 75 - Math.floor(Math.random() * 150));
     drawStar(ctx, Math.floor(Math.random() * 4) + 2);
     ctx.restore();
   }

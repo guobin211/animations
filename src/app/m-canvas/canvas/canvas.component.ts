@@ -7,7 +7,7 @@ import { Colors } from "../../core/utils";
   selector: "app-canvas",
   templateUrl: "./canvas.component.html",
   styleUrls: ["./canvas.component.scss"],
-  changeDetection: ChangeDetectionStrategy.OnPush
+  changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class CanvasComponent implements AfterViewInit, OnDestroy {
   ts = TS_CODE;
@@ -40,7 +40,7 @@ export class CanvasComponent implements AfterViewInit, OnDestroy {
       this.canvas = element;
       this.dpr = dpr;
       // 选择渲染方式,更多的渲染方式/core/_impl/Canvas.ts
-      this.ctx = element.getContext("2d", {alpha: false, desynchronized: false});
+      this.ctx = element.getContext("2d", { alpha: false, desynchronized: false });
       this.ctx.scale(dpr, dpr);
     } else {
       console.error(`element not canvas!`);
@@ -66,7 +66,7 @@ function drawRect(ctx: R2D) {
 function drawTranslate(ctx: R2D) {
   for (let j = 0; j < 3; j++) {
     ctx.save();
-    ctx.fillStyle = "rgb(" + (51 * j) + ", " + (255 - 51 * j) + ", 255)";
+    ctx.fillStyle = "rgb(" + 51 * j + ", " + (255 - 51 * j) + ", 255)";
     // translate(x, y) 平移操作, 将canvas画布水平垂直移动
     ctx.translate(10 + j * 50, 10 + j * 50);
     ctx.fillRect(0, 0, 25, 25);

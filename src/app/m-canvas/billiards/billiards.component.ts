@@ -6,7 +6,6 @@ import { tsCode } from "./code";
 @Component({
   selector: "app-billiards",
   templateUrl: "./billiards.component.html",
-  styleUrls: ["./billiards.component.scss"],
 })
 export class BilliardsComponent extends CanvasHelper implements AfterViewInit, OnDestroy {
   tsCode = tsCode;
