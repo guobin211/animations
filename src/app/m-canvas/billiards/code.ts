@@ -8,7 +8,13 @@ export const tsCode = `
 function drawAnim() {
   const n = window.requestAnimationFrame(drawAnim);
   callback(n);
-  context.clearRect(0, 0, canvas.width, canvas.height);
+  // 清除画布
+  // context.clearRect(0, 0, canvas.width, canvas.height);
+  // 用透明度fillRect添加长尾效果
+  context.save();
+  context.fillStyle = "rgba(255,255,255,0.3)";
+  context.fillRect(0, 0, canvas.width, canvas.height);
+  context.restore();
   ball0.x += ball0.vx;
   ball0.y += ball0.vy;
   ball1.x += ball1.vx;
@@ -21,6 +27,7 @@ function drawAnim() {
   ball0.draw(context);
   ball1.draw(context);
 }
+
 // 墙体碰撞检测
 function wallCollision(ball: Ball) {
   if (ball.x + ball.radius > canvas.width) {

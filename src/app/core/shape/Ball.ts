@@ -62,12 +62,25 @@ export class Ball extends Shape implements BallOptions {
     context.restore();
   }
 
+  /**
+   * 获取ball的边界
+   */
   getBounds(): BaseBounds {
     return {
       x: this.x - this.radius,
       y: this.y - this.radius,
       width: this.radius * 2,
-      height: this.radius * 2,
+      height: this.radius * 2
     };
+  }
+
+  /**
+   * 模拟加速度
+   * @param multiplication 乘法系数
+   * @param addition 加法系数
+   */
+  withAcceleration(multiplication: number = 0.99, addition: number = 0.25) {
+    this.vy *= multiplication;
+    this.vy += addition;
   }
 }

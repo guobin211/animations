@@ -5,7 +5,7 @@ import { tsCode } from "./code";
 
 @Component({
   selector: "app-billiards",
-  templateUrl: "./billiards.component.html",
+  templateUrl: "./billiards.component.html"
 })
 export class BilliardsComponent extends CanvasHelper implements AfterViewInit, OnDestroy {
   tsCode = tsCode;
@@ -29,28 +29,35 @@ export class BilliardsComponent extends CanvasHelper implements AfterViewInit, O
 
   animate(canvas, context, callback) {
     const ball0 = new Ball({
-        radius: 80,
-        mass: 2,
-        x: 100,
-        y: 100,
-        vx: Math.random() * 10 - 5,
-        vy: Math.random() * 10 - 5,
-        color: "#00ff00",
-      }),
-      ball1 = new Ball({
-        radius: 40,
-        mass: 1,
-        x: 300,
-        y: 300,
-        vx: Math.random() * 10 - 5,
-        vy: Math.random() * 10 - 5,
-      }),
-      bounce = -1;
+          radius: 80,
+          mass: 2,
+          x: 100,
+          y: 100,
+          vx: Math.random() * 10 - 5,
+          vy: Math.random() * 10 - 5,
+          color: "#00ff00"
+        }),
+        ball1 = new Ball({
+          radius: 40,
+          mass: 1,
+          x: 300,
+          y: 300,
+          vx: Math.random() * 10 - 5,
+          vy: Math.random() * 10 - 5
+        }),
+        bounce = -1;
+
     // 动画启动
     function drawAnim() {
       const n = window.requestAnimationFrame(drawAnim);
       callback(n);
-      context.clearRect(0, 0, canvas.width, canvas.height);
+      // 清除画布
+      // context.clearRect(0, 0, canvas.width, canvas.height);
+      // 用透明度fillRect添加长尾效果
+      context.save();
+      context.fillStyle = "rgba(255,255,255,0.3)";
+      context.fillRect(0, 0, canvas.width, canvas.height);
+      context.restore();
       ball0.x += ball0.vx;
       ball0.y += ball0.vy;
       ball1.x += ball1.vx;
@@ -63,6 +70,7 @@ export class BilliardsComponent extends CanvasHelper implements AfterViewInit, O
       ball0.draw(context);
       ball1.draw(context);
     }
+
     // 墙体碰撞检测
     function wallCollision(ball: Ball) {
       if (ball.x + ball.radius > canvas.width) {
@@ -80,16 +88,17 @@ export class BilliardsComponent extends CanvasHelper implements AfterViewInit, O
         ball.vy *= bounce;
       }
     }
+
     // 球体碰撞检测
     function ballCollision(ballA, ballB) {
       const dx = ballA.x - ballB.x,
-        dy = ballA.y - ballB.y,
-        dist = Math.sqrt(dx * dx + dy * dy);
+          dy = ballA.y - ballB.y,
+          dist = Math.sqrt(dx * dx + dy * dy);
       if (dist < ballA.radius + ballB.radius) {
         const vxTotal = ballA.vx - ballB.vx;
         const vxAFinal =
-          ((ballA.mass - ballB.mass) * ballA.vx + 2 * ballB.mass * ballB.vx) /
-          (ballA.mass + ballB.mass);
+            ((ballA.mass - ballB.mass) * ballA.vx + 2 * ballB.mass * ballB.vx) /
+            (ballA.mass + ballB.mass);
         const vxBFinal = vxTotal + vxAFinal;
         ballA.vx = vxAFinal;
         ballB.vx = vxBFinal;
@@ -97,8 +106,8 @@ export class BilliardsComponent extends CanvasHelper implements AfterViewInit, O
         ballB.x += ballB.vx;
         const vyTotal = ballA.vy - ballB.vy;
         const vyAFinal =
-          ((ballA.mass - ballB.mass) * ballA.vy + 2 * ballB.mass * ballB.vy) /
-          (ballA.mass + ballB.mass);
+            ((ballA.mass - ballB.mass) * ballA.vy + 2 * ballB.mass * ballB.vy) /
+            (ballA.mass + ballB.mass);
         const vyBFinal = vyTotal + vyAFinal;
         ballA.vy = vyAFinal;
         ballB.vy = vyBFinal;
