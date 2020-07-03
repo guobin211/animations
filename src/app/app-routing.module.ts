@@ -4,23 +4,25 @@ import { PageAboutComponent } from "./shared/page-about/page-about.component";
 import { PageNotFoundComponent } from "./shared/page-not-found/page-not-found.component";
 
 const rootRoutes: Routes = [
-  {path: "about", component: PageAboutComponent},
+  { path: "about", component: PageAboutComponent },
   {
     path: "canvas",
-    loadChildren: () => import("./m-canvas/m-canvas.module").then((m) => m.MCanvasModule)
+    loadChildren: () => import("./m-canvas/m-canvas.module").then((m) => m.MCanvasModule),
   },
-  {path: "", redirectTo: "about", pathMatch: "full"},
+  { path: "", redirectTo: "about", pathMatch: "full" },
   {
-    path: "**", component: PageNotFoundComponent
-  }
+    path: "**",
+    component: PageNotFoundComponent,
+  },
 ];
 
 @NgModule({
-  imports: [RouterModule.forRoot(rootRoutes, {
-    enableTracing: false,
-    preloadingStrategy: PreloadAllModules
-  })],
-  exports: [RouterModule]
+  imports: [
+    RouterModule.forRoot(rootRoutes, {
+      enableTracing: false,
+      preloadingStrategy: PreloadAllModules,
+    }),
+  ],
+  exports: [RouterModule],
 })
-export class AppRoutingModule {
-}
+export class AppRoutingModule {}

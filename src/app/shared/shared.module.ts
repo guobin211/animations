@@ -20,7 +20,8 @@ import { PageAboutComponent } from "./page-about/page-about.component";
     MyTabsComponent,
     AutoCanvasComponent,
     PageNotFoundComponent,
-    PageAboutComponent],
+    PageAboutComponent,
+  ],
   imports: [
     CommonModule,
     RouterModule,
@@ -30,7 +31,7 @@ import { PageAboutComponent } from "./page-about/page-about.component";
     MatListModule,
     MatTabsModule,
     MatGridListModule,
-    MatButtonModule
+    MatButtonModule,
   ],
   providers: [NgxLocalService],
   exports: [
@@ -42,8 +43,7 @@ import { PageAboutComponent } from "./page-about/page-about.component";
     MatListModule,
     MatTabsModule,
     MatGridListModule,
-    MatButtonModule
-  ]
+    MatButtonModule,
+  ],
 })
-export class SharedModule {
-}
+export class SharedModule {}
