@@ -8,6 +8,8 @@ import { CanvasWebGlComponent } from "./canvas-web-gl/canvas-web-gl.component";
 import { CanvasImageComponent } from "./canvas-image/canvas-image.component";
 import { SharedModule } from "../shared/shared.module";
 import { BilliardsComponent } from "./billiards/billiards.component";
+import { BallAnimComponent } from "./ball-anim/ball-anim.component";
+import { BezierComponent } from "./bezier/bezier.component";
 
 @NgModule({
   declarations: [
@@ -17,6 +19,8 @@ import { BilliardsComponent } from "./billiards/billiards.component";
     CanvasWebGlComponent,
     CanvasImageComponent,
     BilliardsComponent,
+    BallAnimComponent,
+    BezierComponent,
   ],
   imports: [CommonModule, MCanvasRoutingModule, SharedModule],
 })

@@ -1,8 +1,10 @@
 import { BaseContext } from "../core";
 import { Canvas } from "../core/_impl/Canvas";
 
+type Callback = (n: number) => void;
+
 /**
- * CanvasContext.ts
+ * CanvasHelper.ts 组件辅助
  * @author GuoBin 2020-07-01
  */
 export class CanvasHelper {
@@ -21,9 +23,5 @@ export class CanvasHelper {
     };
   }
 
-  animate(
-    canvas: HTMLCanvasElement,
-    context: CanvasRenderingContext2D,
-    callback: (n: number) => void
-  ) {}
+  animate(canvas: HTMLCanvasElement, context: CanvasRenderingContext2D, callback: Callback) {}
 }
