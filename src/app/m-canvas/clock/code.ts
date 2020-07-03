@@ -1,26 +1,9 @@
-import { AfterViewInit, Component, OnInit } from "@angular/core";
-import { AutoCanvasComponent } from "../../shared/auto-canvas/auto-canvas.component";
-import { CallBackNum, R2D } from "../../../typings";
-import { TS_CODE } from "./code";
+/**
+ * code.ts
+ * @author GuoBin 2020-07-03
+ */
 
-@Component({
-  selector: "app-clock",
-  templateUrl: "./clock.component.html",
-  styles: []
-})
-export class ClockComponent extends AutoCanvasComponent implements AfterViewInit {
-  constructor() {
-    super();
-    this.tsCode = TS_CODE;
-  }
-
-  ngAfterViewInit() {
-    loadAnimate(this.ctx, n => this.anim = n);
-    drawHour(this.ctx);
-    drawSeconds(this.ctx, new Date().getSeconds());
-  }
-}
-
+export const TS_CODE = `
 /**
  * 加载动画
  * @param ctx R2D
@@ -32,6 +15,58 @@ function loadAnimate(ctx: R2D, callback: CallBackNum) {
     callback(n);
     drawClock(ctx);
   })();
+}
+
+/**
+ * 旋转绘制时针
+ * @param ctx R2D
+ */
+function drawHour(ctx: R2D) {
+  ctx.save();
+  ctx.clearRect(0, 0, 500, 500);
+  ctx.translate(175, 175);
+  ctx.scale(0.4, 0.4);
+  ctx.rotate(-Math.PI / 2);
+  ctx.strokeStyle = "black";
+  ctx.fillStyle = "white";
+  ctx.lineWidth = 8;
+  ctx.lineCap = "round";
+  ctx.save();
+  for (let i = 0; i < 12; i++) {
+    ctx.beginPath();
+    ctx.rotate(Math.PI / 6);
+    ctx.moveTo(100, 0);
+    ctx.lineTo(120, 0);
+    ctx.stroke();
+  }
+  ctx.restore();
+  ctx.restore();
+}
+
+/**
+ * 绘制秒针
+ * @param ctx R2D
+ * @param sec 当前时间秒
+ */
+function drawSeconds(ctx: R2D, sec: number = 0) {
+  ctx.save();
+  ctx.translate(300, 300);
+  // 计算旋转角度
+  ctx.rotate(sec * Math.PI / 30);
+  ctx.strokeStyle = "#D40000";
+  ctx.fillStyle = "#D40000";
+  ctx.lineWidth = 6;
+  ctx.beginPath();
+  ctx.moveTo(-30, 0);
+  ctx.lineTo(83, 0);
+  ctx.stroke();
+  ctx.beginPath();
+  ctx.arc(0, 0, 10, 0, Math.PI * 2, true);
+  ctx.fill();
+  ctx.beginPath();
+  ctx.arc(95, 0, 10, 0, Math.PI * 2, true);
+  ctx.stroke();
+  ctx.restore();
 }
 
 /**
@@ -122,55 +157,4 @@ function drawClock(ctx: R2D) {
   ctx.stroke();
   ctx.restore();
 }
-
-/**
- * 旋转绘制时针
- * @param ctx R2D
- */
-function drawHour(ctx: R2D) {
-  ctx.save();
-  ctx.clearRect(0, 0, 500, 500);
-  ctx.translate(175, 175);
-  ctx.scale(0.4, 0.4);
-  ctx.rotate(-Math.PI / 2);
-  ctx.strokeStyle = "black";
-  ctx.fillStyle = "white";
-  ctx.lineWidth = 8;
-  ctx.lineCap = "round";
-  ctx.save();
-  for (let i = 0; i < 12; i++) {
-    ctx.beginPath();
-    ctx.rotate(Math.PI / 6);
-    ctx.moveTo(100, 0);
-    ctx.lineTo(120, 0);
-    ctx.stroke();
-  }
-  ctx.restore();
-  ctx.restore();
-}
-
-/**
- * 绘制秒针
- * @param ctx R2D
- * @param sec 当前时间秒
- */
-function drawSeconds(ctx: R2D, sec: number = 0) {
-  ctx.save();
-  ctx.translate(300, 300);
-  // 计算旋转角度
-  ctx.rotate(sec * Math.PI / 30);
-  ctx.strokeStyle = "#D40000";
-  ctx.fillStyle = "#D40000";
-  ctx.lineWidth = 6;
-  ctx.beginPath();
-  ctx.moveTo(-30, 0);
-  ctx.lineTo(83, 0);
-  ctx.stroke();
-  ctx.beginPath();
-  ctx.arc(0, 0, 10, 0, Math.PI * 2, true);
-  ctx.fill();
-  ctx.beginPath();
-  ctx.arc(95, 0, 10, 0, Math.PI * 2, true);
-  ctx.stroke();
-  ctx.restore();
-}
+`;

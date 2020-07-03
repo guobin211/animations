@@ -1,1 +1,17 @@
-<p>clock works!</p>
+<div class="page">
+  <div class="title">
+    <h1>Canvas Clock 时钟动画</h1>
+  </div>
+  <div class="row">
+    <div class="left">
+      <lib-ngx-canvas (canvasInit)="initCanvas($event)"></lib-ngx-canvas>
+    </div>
+    <div class="right">
+      <app-my-tabs>
+        <lib-ngx-prism class="ts" [code]="tsCode"></lib-ngx-prism>
+        <lib-ngx-prism class="html" [code]="htmlCode" lang="html"></lib-ngx-prism>
+        <lib-ngx-prism class="css" [code]="cssCode" lang="css"></lib-ngx-prism>
+      </app-my-tabs>
+    </div>
+  </div>
+</div>
