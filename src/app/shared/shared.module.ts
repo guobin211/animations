@@ -10,9 +10,10 @@ import { MyTabsComponent } from "./my-tabs/my-tabs.component";
 import { MatTabsModule } from "@angular/material/tabs";
 import { MatGridListModule } from "@angular/material/grid-list";
 import { MatButtonModule } from "@angular/material/button";
+import { AutoCanvasComponent } from './auto-canvas/auto-canvas.component';
 
 @NgModule({
-  declarations: [SideNavComponent, MyTabsComponent],
+  declarations: [SideNavComponent, MyTabsComponent, AutoCanvasComponent],
   imports: [
     CommonModule,
     RouterModule,
