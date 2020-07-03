@@ -11,9 +11,16 @@ import { MatTabsModule } from "@angular/material/tabs";
 import { MatGridListModule } from "@angular/material/grid-list";
 import { MatButtonModule } from "@angular/material/button";
 import { AutoCanvasComponent } from "./auto-canvas/auto-canvas.component";
+import { PageNotFoundComponent } from "./page-not-found/page-not-found.component";
+import { PageAboutComponent } from "./page-about/page-about.component";
 
 @NgModule({
-  declarations: [SideNavComponent, MyTabsComponent, AutoCanvasComponent],
+  declarations: [
+    SideNavComponent,
+    MyTabsComponent,
+    AutoCanvasComponent,
+    PageNotFoundComponent,
+    PageAboutComponent],
   imports: [
     CommonModule,
     RouterModule,
@@ -23,7 +30,7 @@ import { AutoCanvasComponent } from "./auto-canvas/auto-canvas.component";
     MatListModule,
     MatTabsModule,
     MatGridListModule,
-    MatButtonModule,
+    MatButtonModule
   ],
   providers: [NgxLocalService],
   exports: [
@@ -35,7 +42,8 @@ import { AutoCanvasComponent } from "./auto-canvas/auto-canvas.component";
     MatListModule,
     MatTabsModule,
     MatGridListModule,
-    MatButtonModule,
-  ],
+    MatButtonModule
+  ]
 })
-export class SharedModule {}
+export class SharedModule {
+}

@@ -11,13 +11,15 @@ function transformRoutesToSide(routes: Routes, prefix: string = ""): SideItem[] 
   for (let i = 0; i < routes.length; i++) {
     const route = routes[i];
     if (route.data) {
-      const item = { name: route.data.name, path: prefix + route.path };
+      const item = {name: route.data.name, path: prefix + route.path};
       res.push(item);
     }
   }
   return res;
 }
 
-const data: SideItem[] = [...transformRoutesToSide(canvasRoutes, "/canvas/")];
-
+const data: SideItem[] = [
+  { name: "About", path: "/about"},
+  ...transformRoutesToSide(canvasRoutes, "/canvas/")
+];
 export const SideListData = data;
