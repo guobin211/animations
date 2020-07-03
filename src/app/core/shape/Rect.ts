@@ -3,7 +3,7 @@
  * @author GuoBin 2020-07-02
  */
 import { Shape } from "../_impl/Shape";
-import { Mapper } from "../utils";
+import { mapperTo } from "../utils";
 
 export interface BaseRect {
   width: number;
@@ -21,7 +21,7 @@ export class Rect extends Shape implements BaseRect {
   constructor(options?: Partial<BaseRect>) {
     super();
     if (options) {
-      Mapper.mapperTo(options, this);
+      mapperTo(options, this);
     }
   }
 

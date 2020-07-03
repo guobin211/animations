@@ -3,7 +3,7 @@
  * @author GuoBin 2020-07-02
  */
 import { Shape } from "../_impl/Shape";
-import { Mapper } from "../utils";
+import { mapperTo } from "../utils";
 
 export interface BaseSector {
   x: number;
@@ -31,7 +31,7 @@ export class Sector extends Shape implements BaseSector {
   constructor(option?: Partial<BaseSector>) {
     super();
     if (option) {
-      Mapper.mapperTo<Partial<BaseSector>, Sector>(option, this);
+      mapperTo<Partial<BaseSector>, Sector>(option, this);
     }
   }
 
