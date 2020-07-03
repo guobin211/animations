@@ -3,48 +3,82 @@
  * @author GuoBin 2020-07-02
  */
 
-export const tsCode = `
-// callback() 用于清除动画定时器
-function loadAnim(canvas: HTMLCanvasElement,
-                  context: CanvasRenderingContext2D,
-                  callback: (n: number) => void) {
-  const w = canvas.width, h = canvas.height;
-  const words = \`0123456789qwertyuiopasdfghjklzxcvbnm,./;\\\\[]QWERTYUIOP{}ASDFGHJHJKL:ZXCVBBNM<>?\`;
-  const clearColor = "rgba(0,0,0,.1)",
-      wordColor = "#33ff33",
-      wordsArr = words.split(""),
-      fontSize = 16,
-      col = w / fontSize;
-  const drops: number[] = [];
-  for (let i = 0; i < col; i++) {
-    drops[i] = 1;
-  }
-  canvas.style.background = "#000";
-
-  function draw() {
-    context.save();
-    context.fillStyle = wordColor;
-    context.font = fontSize + "px arial";
-    // 生成文字元素
-    for (let i = 0; i < drops.length; i++) {
-      const text = wordsArr[Math.floor(Math.random() * wordsArr.length)];
-      context.fillText(text, i * fontSize, drops[i] * fontSize);
-      if (drops[i] * fontSize > h && Math.random() > 0.98) {
-        drops[i] = 0;
-      }
-      drops[i]++;
-    }
-    // 重置state
-    context.restore();
-  }
-
-  (function animate() {
-    const n = window.requestAnimationFrame(animate);
-    callback(n);
-    context.fillStyle = clearColor;
-    context.clearRect(0, 0, w, h);
-    draw();
-  })();
+export const TS_CODE = `
+/**
+ * 初始化2D Context
+ * @param canvas HTMLCanvasElement
+ * @param option CanvasRenderingContext2DSettings
+ */
+static initCtx(canvas: HTMLCanvasElement, option?: CanvasRenderingContext2DSettings) {
+  const dpr = setUpDpr(canvas);
+  const ctx = canvas.getContext("2d", option);
+  ctx.scale(dpr, dpr);
+  return {dpr, ctx};
 }
+
+ngAfterViewInit(): void {
+  this.canvas = this.canvasElementRef.nativeElement;
+  this.ctx = Canvas.initCtx(this.canvas).ctx;
+  // 只能选择一种渲染方式
+  // this.gl = this.canvas.getContext("webgl");
+  // this.gl2 = this.canvas.getContext("webgl2");
+  // this.bMap = this.canvas.getContext("bitmaprenderer");
+  drawText(this.ctx);
+}
+
+function drawText(ctx: R2D) {
+  const renderList = ["CanvasRenderingContext2D", "WebGLRenderingContext",
+                      "WebGL2RenderingContext", "ImageBitmapRenderingContext"];
+  ctx.font = "24px Roboto";
+  for (let i = 0; i < renderList.length; i++) {
+    ctx.fillText(renderList[i], 20, 50 * (i + 1));
+  }
+}
+
+export enum ContextID {
+  DEFAULT = "2d",
+  BITMAP = "bitmaprenderer",
+  GL = "webgl",
+  GLL = "webgl2",
+}
+
+export interface CanvasOption {
+  /**
+   * canvas 元素
+   */
+  dom: HTMLCanvasElement;
+  /**
+   * 渲染方式
+   */
+  contextId?: ContextID;
+  /**
+   * 渲染引擎配置
+   */
+  options?:
+    | CanvasRenderingContext2DSettings
+    | ImageBitmapRenderingContextSettings
+    | WebGLContextAttributes;
+}
+
+`;
+
+export const HTML_CODE = `
+<div class="page">
+  <div class="title">
+    <h1>Canvas Context 图形绘制上下文</h1>
+  </div>
+  <div class="row">
+    <div class="left">
+      <canvas width="500" height="500" #canvasElementRef>
+        your browser not support canvas!
+      </canvas>
+    </div>
+    <div class="right">
+      <app-my-tabs>
+        <lib-ngx-prism class="ts" [code]="tsCode"></lib-ngx-prism>
+      </app-my-tabs>
+    </div>
+  </div>
+</div>
 
 `;

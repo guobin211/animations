@@ -3,114 +3,95 @@
  * @author GuoBin 2020-07-02
  */
 
-export const ts = `
-@Component({
-  selector: "app-canvas",
-  templateUrl: "./canvas.component.html",
-  styleUrls: ["./canvas.component.scss"],
-  changeDetection: ChangeDetectionStrategy.OnPush
-})
-export class CanvasComponent implements AfterViewInit, OnDestroy {
-  private canvas: HTMLCanvasElement;
-  private ctx: CanvasContext;
-  private animate: number;
-  ts = ts;
-  html = html;
+export const TS_CODE = `
+/**
+ * quick.d.ts 类型简写
+ * @author GuoBin 2020-07-03
+ */
+export type R2D = CanvasRenderingContext2D;
+export type RGL = WebGLRenderingContext;
+export type RGL2 = WebGL2RenderingContext;
+export type RBitMap = ImageBitmapRenderingContext;
+export type CanvasEl = HTMLCanvasElement;
 
-  initCanvas(el: HTMLCanvasElement) {
-    this.canvas = el;
-    this.ctx = Context.initContext(el);
-  }
+export class CanvasComponent implements AfterViewInit, OnDestroy {
+  ts = TS_CODE;
+  html = HTML_CODE;
+  css = CSS_CODE;
+  private animate: number;
+  private canvas: HTMLCanvasElement;
+  private ctx: CanvasRenderingContext2D;
+  private dpr = 1;
 
   ngAfterViewInit(): void {
-    if (this.ctx) {
-      this.canvas.style.background = "#323232";
-      initAnimate(this.canvas, this.ctx, v => this.animate = v);
-    }
+    this.initContext();
+    drawRect(this.ctx);
   }
 
   ngOnDestroy(): void {
     window.cancelAnimationFrame(this.animate);
   }
-}
-
-function initAnimate(canvas: HTMLCanvasElement, ctx: CanvasContext, callback: (v: number) => void) {
-  let speed = 0.1;
-  const rad = Math.PI * 2 / 100;
-  const w = ctx.width / 2;
-  const h = ctx.height / 2;
-
-  function drawFrame() {
-    const n = window.requestAnimationFrame(drawFrame);
-    callback(n);
-    ctx.ctx.clearRect(0, 0, ctx.width, ctx.height);
-    whiteCircle(ctx.ctx, w, h);
-    text(speed, ctx.ctx, w, h);
-    buildCircle(ctx.ctx, speed, w, h, rad);
-    if (speed > 100) {
-      speed = 0;
+  // 获取dom元素，实例化context
+  private initContext() {
+    const element = document.getElementById("m-canvas-canvas");
+    if (element instanceof HTMLCanvasElement) {
+      const dpr = window.devicePixelRatio || 1;
+      const rect = element.getBoundingClientRect();
+      element.width = rect.width * dpr;
+      element.height = rect.height * dpr;
+      this.canvas = element;
+      this.dpr = dpr;
+      // 选择渲染方式,更多的渲染方式/core/_impl/Canvas.ts
+      this.ctx = element.getContext("2d", {alpha: false, desynchronized: false});
+      this.ctx.scale(dpr, dpr);
+    } else {
+      console.error(\`element not canvas!\`);
     }
-    speed += 0.1;
   }
-
-  drawFrame();
 }
 
-function text(n: number, context: CanvasRenderingContext2D, centerX: number, centerY: number) {
-  context.save();
-  context.strokeStyle = "#49f";
-  context.font = "40px Arial";
-  context.strokeText(n.toFixed(0) + "%", centerX - 25, centerY + 10);
-  context.stroke();
-  context.restore();
+/**
+ * 绘制矩形
+ * @param ctx R2D => CanvasRenderingContext2D
+ * R2D 类型简写
+ */
+function drawRect(ctx: R2D) {
+  // 填充颜色
+  ctx.fillStyle = Colors.lightTeal;
+  ctx.fillRect(50, 50, 100, 100);
 }
-
-function whiteCircle(context: CanvasRenderingContext2D, centerX: number, centerY: number) {
-  context.save();
-  context.beginPath();
-  context.strokeStyle = "white";
-  context.arc(centerX, centerY, 100, 0, Math.PI * 2, false);
-  context.stroke();
-  context.closePath();
-  context.restore();
-}
-
-function buildCircle(context: CanvasRenderingContext2D,
-                     n: number,
-                     centerX: number,
-                     centerY: number,
-                     rad: number) {
-  context.save();
-  context.beginPath();
-  context.strokeStyle = "#49f";
-  context.lineWidth = 5;
-  context.arc(centerX,
-    centerY,
-    100,
-    -Math.PI / 2,
-    -Math.PI / 2 + n * rad,
-    false);
-  context.stroke();
-  context.closePath();
-  context.restore();
-}
-
 `;
-
-export const html = `
+export const HTML_CODE = `
 <div class="page">
   <div class="title">
     <h1>Canvas Detail</h1>
   </div>
   <div class="row">
-    <div class="col">
-      <lib-ngx-canvas (canvasInit)="initCanvas($event)"></lib-ngx-canvas>
+    <div class="left">
+      <canvas id="m-canvas-canvas" width="500" height="500" style="background: rgba(0, 0, 0, 1)">
+        your browser not support canvas!
+      </canvas>
     </div>
-    <div class="col">
+    <div class="right">
       <app-my-tabs>
-        <lib-ngx-prism [code]="code" class="ts"></lib-ngx-prism>
+        <lib-ngx-prism [code]="ts" class="ts"></lib-ngx-prism>
+        <lib-ngx-prism [code]="html" class="html"></lib-ngx-prism>
       </app-my-tabs>
     </div>
   </div>
 </div>
+`;
+export const CSS_CODE = `
+// 设置dom元素样式
+.left {
+  background: cadetblue;
+}
+
+#m-canvas-canvas {
+  width: 500px;
+  height: 500px;
+  background: rgba(0, 0, 0, 1);
+  // 有透明度会叠加父元素的颜色
+  opacity: 1;
+}
 `;

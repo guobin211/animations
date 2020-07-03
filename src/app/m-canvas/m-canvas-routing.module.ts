@@ -8,6 +8,8 @@ import { CanvasImageComponent } from "./canvas-image/canvas-image.component";
 import { BilliardsComponent } from "./billiards/billiards.component";
 import { BallAnimComponent } from "./ball-anim/ball-anim.component";
 import { BezierComponent } from "./bezier/bezier.component";
+import { RoundProgressComponent } from "./round-progress/round-progress.component";
+import { ScrollTextComponent } from "./scroll-text/scroll-text.component";
 
 export const canvasRoutes: Routes = [
   { path: "", redirectTo: "canvas", pathMatch: "full" },
@@ -19,6 +21,8 @@ export const canvasRoutes: Routes = [
   { path: "bill", component: BilliardsComponent, data: { name: "桌球运动" } },
   { path: "ball", component: BallAnimComponent, data: { name: "球体碰撞连线" } },
   { path: "bezier", component: BezierComponent, data: { name: "贝塞尔曲线" } },
+  { path: "round", component: RoundProgressComponent, data: { name: "圆形进度条" } },
+  { path: "scroll-text", component: ScrollTextComponent, data: { name: "滚动文字" } },
 ];
 
 @NgModule({

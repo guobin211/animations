@@ -10,6 +10,8 @@ import { SharedModule } from "../shared/shared.module";
 import { BilliardsComponent } from "./billiards/billiards.component";
 import { BallAnimComponent } from "./ball-anim/ball-anim.component";
 import { BezierComponent } from "./bezier/bezier.component";
+import { RoundProgressComponent } from './round-progress/round-progress.component';
+import { ScrollTextComponent } from './scroll-text/scroll-text.component';
 
 @NgModule({
   declarations: [
@@ -21,6 +23,8 @@ import { BezierComponent } from "./bezier/bezier.component";
     BilliardsComponent,
     BallAnimComponent,
     BezierComponent,
+    RoundProgressComponent,
+    ScrollTextComponent,
   ],
   imports: [CommonModule, MCanvasRoutingModule, SharedModule],
 })

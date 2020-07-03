@@ -1,17 +1,15 @@
 <div class="page">
   <div class="title">
-    <h1>Canvas Context 图形绘制上下文</h1>
+    <h1>Canvas Scroll 滚动文字</h1>
   </div>
   <div class="row">
     <div class="left">
-      <canvas width="500" height="500" #canvasElementRef>
-        your browser not support canvas!
-      </canvas>
+      <lib-ngx-canvas (canvasInit)="initCanvas($event)"></lib-ngx-canvas>
     </div>
     <div class="right">
       <app-my-tabs>
         <lib-ngx-prism class="ts" [code]="tsCode"></lib-ngx-prism>
-        <lib-ngx-prism class="html" [code]="htmlCode" lang="html"></lib-ngx-prism>
+        <lib-ngx-prism class="html" [code]="html" lang="html"></lib-ngx-prism>
       </app-my-tabs>
     </div>
   </div>

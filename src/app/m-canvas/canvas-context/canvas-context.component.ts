@@ -1,23 +1,39 @@
-import { AfterViewInit, ChangeDetectionStrategy, Component, OnDestroy } from "@angular/core";
-import { CanvasHelper } from "../../helper/CanvasHelper";
-import { tsCode } from "./code";
+import {
+  AfterViewInit,
+  ChangeDetectionStrategy,
+  Component, ElementRef,
+  OnDestroy,
+  ViewChild
+} from "@angular/core";
+import { HTML_CODE, TS_CODE } from "./code";
+import { CanvasEl, R2D, RBitMap, RGL, RGL2 } from "../../../typings";
+import { Canvas } from "../../core/_impl/Canvas";
 
 @Component({
   selector: "app-canvas-context",
   templateUrl: "./canvas-context.component.html",
   styleUrls: ["./canvas-context.component.scss"],
-  changeDetection: ChangeDetectionStrategy.OnPush,
+  changeDetection: ChangeDetectionStrategy.OnPush
 })
-export class CanvasContextComponent extends CanvasHelper implements AfterViewInit, OnDestroy {
-  // BaseCanvas ngOnDestroy() 清除动画
+export class CanvasContextComponent implements AfterViewInit, OnDestroy {
+  @ViewChild("canvasElementRef") canvasElementRef: ElementRef<HTMLCanvasElement>;
   anim: number;
-  tsCode = tsCode;
-  constructor() {
-    super();
-  }
+  tsCode = TS_CODE;
+  htmlCode = HTML_CODE;
+  canvas: CanvasEl;
+  ctx: R2D;
+  gl: RGL;
+  gl2: RGL2;
+  bMap: RBitMap;
 
   ngAfterViewInit(): void {
-    loadAnim(this.canvas, this.ctx.ctx, (n) => (this.anim = n));
+    this.canvas = this.canvasElementRef.nativeElement;
+    this.ctx = Canvas.initCtx(this.canvas).ctx;
+    // 只能选择一种渲染方式
+    // this.gl = this.canvas.getContext("webgl");
+    // this.gl2 = this.canvas.getContext("webgl2");
+    // this.bMap = this.canvas.getContext("bitmaprenderer");
+    drawText(this.ctx);
   }
 
   ngOnDestroy(): void {
@@ -25,47 +41,11 @@ export class CanvasContextComponent extends CanvasHelper implements AfterViewIni
   }
 }
 
-function loadAnim(
-  canvas: HTMLCanvasElement,
-  context: CanvasRenderingContext2D,
-  callback: (n: number) => void
-) {
-  const w = canvas.width,
-    h = canvas.height;
-  const words = `0123456789qwertyuiopasdfghjklzxcvbnm,./;\\[]QWERTYUIOP{}ASDFGHJHJKL:ZXCVBBNM<>?`;
-  const clearColor = "rgba(0,0,0,.1)",
-    wordColor = "#33ff33",
-    wordsArr = words.split(""),
-    fontSize = 16,
-    col = w / fontSize;
-  const drops: number[] = [];
-  for (let i = 0; i < col; i++) {
-    drops[i] = 1;
+function drawText(ctx: R2D) {
+  const renderList = ["CanvasRenderingContext2D", "WebGLRenderingContext",
+                      "WebGL2RenderingContext", "ImageBitmapRenderingContext"];
+  ctx.font = "24px Roboto";
+  for (let i = 0; i < renderList.length; i++) {
+    ctx.fillText(renderList[i], 20, 50 * (i + 1));
   }
-  canvas.style.background = "#000";
-
-  function draw() {
-    context.save();
-    context.fillStyle = wordColor;
-    context.font = fontSize + "px arial";
-    // 生成文字元素
-    for (let i = 0; i < drops.length; i++) {
-      const text = wordsArr[Math.floor(Math.random() * wordsArr.length)];
-      context.fillText(text, i * fontSize, drops[i] * fontSize);
-      if (drops[i] * fontSize > h && Math.random() > 0.98) {
-        drops[i] = 0;
-      }
-      drops[i]++;
-    }
-    // 重置state
-    context.restore();
-  }
-
-  (function animate() {
-    const n = window.requestAnimationFrame(animate);
-    callback(n);
-    context.fillStyle = clearColor;
-    context.clearRect(0, 0, w, h);
-    draw();
-  })();
 }

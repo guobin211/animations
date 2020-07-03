@@ -1,92 +1,57 @@
 import { AfterViewInit, ChangeDetectionStrategy, Component, OnDestroy } from "@angular/core";
-import { BaseContext } from "../../core";
-import { html, ts } from "./code";
-import { Canvas } from "../../core/_impl/Canvas";
+import { CSS_CODE, HTML_CODE, TS_CODE } from "./code";
+import { R2D } from "../../../typings";
+import { Colors } from "../../core/utils";
 
 @Component({
   selector: "app-canvas",
   templateUrl: "./canvas.component.html",
   styleUrls: ["./canvas.component.scss"],
-  changeDetection: ChangeDetectionStrategy.OnPush,
+  changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class CanvasComponent implements AfterViewInit, OnDestroy {
-  private canvas: HTMLCanvasElement;
-  private ctx: BaseContext;
+  ts = TS_CODE;
+  html = HTML_CODE;
+  css = CSS_CODE;
   private animate: number;
-  ts = ts;
-  html = html;
-
-  initCanvas(el: HTMLCanvasElement) {
-    this.canvas = el;
-    this.ctx = Canvas.initContext(el);
-  }
+  private canvas: HTMLCanvasElement;
+  private ctx: CanvasRenderingContext2D;
+  private dpr = 1;
 
   ngAfterViewInit(): void {
-    if (this.ctx) {
-      this.canvas.style.background = "#323232";
-      initAnimate(this.canvas, this.ctx, (v) => (this.animate = v));
-    }
+    this.initContext();
+    drawRect(this.ctx);
   }
 
   ngOnDestroy(): void {
     window.cancelAnimationFrame(this.animate);
   }
-}
-
-function initAnimate(canvas: HTMLCanvasElement, ctx: BaseContext, callback: (v: number) => void) {
-  let speed = 0.1;
-  const rad = (Math.PI * 2) / 100;
-  const w = ctx.width / 2;
-  const h = ctx.height / 2;
-
-  function drawFrame() {
-    const n = window.requestAnimationFrame(drawFrame);
-    callback(n);
-    ctx.ctx.clearRect(0, 0, ctx.width, ctx.height);
-    whiteCircle(ctx.ctx, w, h);
-    text(speed, ctx.ctx, w, h);
-    buildCircle(ctx.ctx, speed, w, h, rad);
-    if (speed > 100) {
-      speed = 0;
+  // 获取dom元素，实例化context
+  private initContext() {
+    const element = document.getElementById("m-canvas-canvas");
+    if (element instanceof HTMLCanvasElement) {
+      const dpr = window.devicePixelRatio || 1;
+      const rect = element.getBoundingClientRect();
+      element.width = rect.width * dpr;
+      element.height = rect.height * dpr;
+      this.canvas = element;
+      this.dpr = dpr;
+      // 选择渲染方式,更多的渲染方式/core/_impl/Canvas.ts
+      this.ctx = element.getContext("2d", {alpha: false, desynchronized: false});
+      this.ctx.scale(dpr, dpr);
+    } else {
+      console.error(`element not canvas!`);
     }
-    speed += 0.1;
   }
-
-  drawFrame();
 }
 
-function text(n: number, context: CanvasRenderingContext2D, centerX: number, centerY: number) {
-  context.save();
-  context.strokeStyle = "#49f";
-  context.font = "40px Arial";
-  context.strokeText(n.toFixed(0) + "%", centerX - 25, centerY + 10);
-  context.stroke();
-  context.restore();
-}
-
-function whiteCircle(context: CanvasRenderingContext2D, centerX: number, centerY: number) {
-  context.save();
-  context.beginPath();
-  context.strokeStyle = "white";
-  context.arc(centerX, centerY, 100, 0, Math.PI * 2, false);
-  context.stroke();
-  context.closePath();
-  context.restore();
-}
-
-function buildCircle(
-  context: CanvasRenderingContext2D,
-  n: number,
-  centerX: number,
-  centerY: number,
-  rad: number
-) {
-  context.save();
-  context.beginPath();
-  context.strokeStyle = "#49f";
-  context.lineWidth = 5;
-  context.arc(centerX, centerY, 100, -Math.PI / 2, -Math.PI / 2 + n * rad, false);
-  context.stroke();
-  context.closePath();
-  context.restore();
+/**
+ * 绘制矩形
+ * @param ctx R2D => CanvasRenderingContext2D
+ * R2D 类型简写
+ */
+function drawRect(ctx: R2D) {
+  // 填充颜色
+  ctx.fillStyle = Colors.lightTeal;
+  ctx.fillRect(50, 50, 100, 100);
 }

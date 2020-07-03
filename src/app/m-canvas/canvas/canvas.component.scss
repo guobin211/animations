@@ -1,0 +1,12 @@
+// 设置dom元素样式
+.left {
+  background: cadetblue;
+}
+
+#m-canvas-canvas {
+  width: 500px;
+  height: 500px;
+  background: rgba(0, 0, 0, 1);
+  // 有透明度会叠加父元素的颜色
+  opacity: 1;
+}

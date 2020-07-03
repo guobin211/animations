@@ -4,12 +4,15 @@
   </div>
   <div class="row">
     <div class="left">
-      <lib-ngx-canvas (canvasInit)="initCanvas($event)"></lib-ngx-canvas>
+      <canvas id="m-canvas-canvas" width="500" height="500">
+        your browser not support canvas!
+      </canvas>
     </div>
     <div class="right">
       <app-my-tabs>
         <lib-ngx-prism [code]="ts" class="ts"></lib-ngx-prism>
-        <lib-ngx-prism [code]="html" class="html"></lib-ngx-prism>
+        <lib-ngx-prism [code]="html" class="html" lang="html"></lib-ngx-prism>
+        <lib-ngx-prism [code]="css" class="css" lang="css"></lib-ngx-prism>
       </app-my-tabs>
     </div>
   </div>
