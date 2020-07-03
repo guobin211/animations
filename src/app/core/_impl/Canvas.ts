@@ -5,6 +5,22 @@
 import { BaseCanvas, BaseContext, CanvasOption } from "../_base";
 import { animationSetup } from "../hooks";
 
+/**
+ * 缩放dpr,并做animate的兼容处理
+ * @param canvas HTMLCanvasElement
+ */
+function setUpDpr(canvas: HTMLCanvasElement): number {
+  animationSetup();
+  const dpr = window.devicePixelRatio || 1;
+  const rect = canvas.getBoundingClientRect();
+  canvas.width = rect.width * dpr;
+  canvas.height = rect.height * dpr;
+  return dpr;
+}
+
+/**
+ * Canvas 渲染器工具类
+ */
 export class Canvas implements BaseCanvas {
   readonly canvas: HTMLCanvasElement;
   readonly ctx: CanvasRenderingContext2D;
@@ -15,39 +31,17 @@ export class Canvas implements BaseCanvas {
 
   constructor(private readonly options: CanvasOption) {
     animationSetup();
-    let ctx, gl, gl2, map;
+    let ctx;
     const dpr = window.devicePixelRatio || 1;
     const rect = options.dom.getBoundingClientRect();
     options.dom.width = rect.width * dpr;
     options.dom.height = rect.height * dpr;
     this.canvas = options.dom;
     this.dpr = dpr;
-    if (Array.isArray(options.contextId)) {
-      if (options.contextId.length === 0) {
-        ctx = options.dom.getContext("2d", options.options);
-      } else {
-        for (const id of options.contextId) {
-          if (id === "2d" && !ctx) {
-            ctx = options.dom.getContext("2d", options.options);
-          }
-          if (id === "webgl" && !gl) {
-            gl = options.dom.getContext("webgl", options.options);
-          }
-          if (id === "webgl2" && !gl2) {
-            gl2 = options.dom.getContext("webgl2", options.options);
-          }
-          if (id === "bitmaprenderer" && !map) {
-            map = options.dom.getContext("bitmaprenderer", options.options);
-          }
-        }
-      }
-    } else {
-      ctx = options.dom.getContext(options.contextId, options.options);
+    ctx = options.dom.getContext(options.contextId, options.options);
+    if (ctx.scale) {
+      ctx.scale(dpr, dpr);
     }
-    ctx?.scale(dpr, dpr);
-    gl?.scale(dpr, dpr);
-    gl2?.scale(dpr, dpr);
-    map?.scale(dpr, dpr);
     switch (options.contextId) {
       case "2d":
         this.ctx = ctx;
@@ -63,20 +57,64 @@ export class Canvas implements BaseCanvas {
         break;
       default:
         this.ctx = ctx;
-        this.gl = gl;
-        this.gl2 = gl2;
-        this.bitMap = map;
         return;
     }
   }
 
+  /**
+   * 初始化带dom信息的BaseContext
+   * @param canvas HTMLCanvasElement
+   */
   static initContext(canvas: HTMLCanvasElement): BaseContext {
-    const dpr = window.devicePixelRatio || 1;
-    const rect = canvas.getBoundingClientRect();
-    canvas.width = rect.width * dpr;
-    canvas.height = rect.height * dpr;
+    const dpr = setUpDpr(canvas);
     const ctx = canvas.getContext("2d");
     ctx.scale(dpr, dpr);
-    return { ctx, dpr, width: canvas.width, height: canvas.height };
+    return {ctx, dpr, width: canvas.width, height: canvas.height};
+  }
+
+  /**
+   * 初始化2D Context
+   * @param canvas HTMLCanvasElement
+   * @param option CanvasRenderingContext2DSettings
+   */
+  static initCtx(canvas: HTMLCanvasElement, option?: CanvasRenderingContext2DSettings) {
+    const dpr = setUpDpr(canvas);
+    const ctx = canvas.getContext("2d", option);
+    ctx.scale(dpr, dpr);
+    return {dpr, ctx};
+  }
+
+  /**
+   * 初始化WebGL WebGLRenderingContext
+   * @param canvas HTMLCanvasElement
+   * @param option WebGLContextAttributes
+   */
+  static initGl(canvas: HTMLCanvasElement, option?: WebGLContextAttributes) {
+    const dpr = setUpDpr(canvas);
+    const gl: WebGLRenderingContext = canvas.getContext("webgl", option);
+    return {dpr, gl};
+  }
+
+  /**
+   * 初始化WebGL2 WebGL2RenderingContext
+   * @param canvas HTMLCanvasElement
+   * @param option WebGLContextAttributes
+   */
+  static initGl2(canvas: HTMLCanvasElement, option?: WebGLContextAttributes) {
+    const dpr = setUpDpr(canvas);
+    const gl2: WebGL2RenderingContext = canvas.getContext("webgl2", option);
+    return {dpr, gl2};
+  }
+
+  /**
+   * 初始化 ImageBitmapRendering
+   * @param canvas HTMLCanvasElement
+   * @param option ImageBitmapRenderingContextSettings
+   */
+  static initBitMapRenderer(canvas: HTMLCanvasElement,
+                            option?: ImageBitmapRenderingContextSettings) {
+    const dpr = setUpDpr(canvas);
+    const bMap: ImageBitmapRenderingContext = canvas.getContext("bitmaprenderer", option);
+    return {dpr, bMap};
   }
 }

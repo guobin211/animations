@@ -26,6 +26,12 @@ export class Colors {
   static danger = "#dc3545";
   static light = "#f8f9fa";
   static dark = "#343a40";
+  static black = "#000000";
+  static silver = "#C0C0C0";
+  static maroon = "#800000";
+  static fuchsia = "#FF00FF";
+  static olive = "#808000";
+  static navy = "#000080";
 
   /**
    * color 转换
@@ -47,5 +53,13 @@ export class Colors {
       }
       return color;
     }
+  }
+
+  /**
+   * 随机rgb颜色
+   */
+  static random(): string {
+    const i = Math.floor(Math.random() * 6), j = Math.floor(Math.random() * 6);
+    return "rgb(" + Math.floor(255 - 42.5 * i) + "," + Math.floor(255 - 42.5 * j) + ",0)";
   }
 }

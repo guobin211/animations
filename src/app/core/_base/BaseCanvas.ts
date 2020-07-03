@@ -27,7 +27,7 @@ export interface CanvasOption {
   /**
    * 渲染方式
    */
-  contextId?: ContextID | string[];
+  contextId?: ContextID;
   /**
    * 渲染引擎配置
    */
