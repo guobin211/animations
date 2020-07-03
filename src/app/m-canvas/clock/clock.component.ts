@@ -6,7 +6,7 @@ import { TS_CODE } from "./code";
 @Component({
   selector: "app-clock",
   templateUrl: "./clock.component.html",
-  styles: []
+  styles: [],
 })
 export class ClockComponent extends AutoCanvasComponent implements AfterViewInit {
   constructor() {
@@ -15,7 +15,7 @@ export class ClockComponent extends AutoCanvasComponent implements AfterViewInit
   }
 
   ngAfterViewInit() {
-    loadAnimate(this.ctx, n => this.anim = n);
+    loadAnimate(this.ctx, (n) => (this.anim = n));
     drawHour(this.ctx);
     drawSeconds(this.ctx, new Date().getSeconds());
   }
@@ -97,7 +97,7 @@ function drawClock(ctx: R2D) {
   ctx.restore();
   // Write seconds
   ctx.save();
-  ctx.rotate(sec * Math.PI / 30);
+  ctx.rotate((sec * Math.PI) / 30);
   ctx.strokeStyle = "#D40000";
   ctx.fillStyle = "#D40000";
   ctx.lineWidth = 6;
@@ -158,7 +158,7 @@ function drawSeconds(ctx: R2D, sec: number = 0) {
   ctx.save();
   ctx.translate(300, 300);
   // 计算旋转角度
-  ctx.rotate(sec * Math.PI / 30);
+  ctx.rotate((sec * Math.PI) / 30);
   ctx.strokeStyle = "#D40000";
   ctx.fillStyle = "#D40000";
   ctx.lineWidth = 6;

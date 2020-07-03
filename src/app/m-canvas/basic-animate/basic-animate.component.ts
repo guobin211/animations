@@ -12,7 +12,7 @@ interface ImageObject {
 @Component({
   selector: "app-basic-animate",
   templateUrl: "./basic-animate.component.html",
-  styleUrls: ["./basic-animate.component.scss"]
+  styleUrls: ["./basic-animate.component.scss"],
 })
 export class BasicAnimateComponent extends AutoCanvasComponent implements OnInit, AfterViewInit {
   image: ImageObject;
@@ -28,7 +28,7 @@ export class BasicAnimateComponent extends AutoCanvasComponent implements OnInit
 
   ngAfterViewInit() {
     this.canvas.style.background = "#000";
-    loadAnimate(this.ctx, n => this.anim = n, this.image);
+    loadAnimate(this.ctx, (n) => (this.anim = n), this.image);
   }
 }
 
@@ -42,7 +42,7 @@ function init() {
   sun.src = "https://mdn.mozillademos.org/files/1456/Canvas_sun.png";
   moon.src = "https://mdn.mozillademos.org/files/1443/Canvas_moon.png";
   earth.src = "https://mdn.mozillademos.org/files/1429/Canvas_earth.png";
-  return {sun, moon, earth};
+  return { sun, moon, earth };
 }
 
 /**
@@ -52,7 +52,7 @@ function init() {
  * @param img ImageObject
  */
 function loadAnimate(ctx: R2D, call: CallBackNum, img: ImageObject) {
-  const {earth, moon, sun} = img;
+  const { earth, moon, sun } = img;
 
   // 绘画逻辑
   function draw() {
@@ -66,15 +66,17 @@ function loadAnimate(ctx: R2D, call: CallBackNum, img: ImageObject) {
     ctx.translate(150, 150);
     // Earth
     const time = new Date();
-    ctx.rotate(((2 * Math.PI) / 60) * time.getSeconds()
-        + ((2 * Math.PI) / 60000) * time.getMilliseconds());
+    ctx.rotate(
+      ((2 * Math.PI) / 60) * time.getSeconds() + ((2 * Math.PI) / 60000) * time.getMilliseconds()
+    );
     ctx.translate(105, 0);
     ctx.fillRect(0, -12, 50, 24); // Shadow
     ctx.drawImage(earth, -12, -12);
     // Moon
     ctx.save();
-    ctx.rotate(((2 * Math.PI) / 6) * time.getSeconds()
-        + ((2 * Math.PI) / 6000) * time.getMilliseconds());
+    ctx.rotate(
+      ((2 * Math.PI) / 6) * time.getSeconds() + ((2 * Math.PI) / 6000) * time.getMilliseconds()
+    );
     ctx.translate(0, 28.5);
     ctx.drawImage(moon, -3.5, -3.5);
     ctx.restore();
@@ -95,4 +97,3 @@ function loadAnimate(ctx: R2D, call: CallBackNum, img: ImageObject) {
 
   animate();
 }
-
