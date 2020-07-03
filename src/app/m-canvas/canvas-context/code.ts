@@ -4,6 +4,61 @@
  */
 
 export const TS_CODE = `
+ngAfterViewInit(): void {
+  this.canvas = this.canvasElementRef.nativeElement;
+  this.ctx = Canvas.initCtx(this.canvas).ctx;
+  // 只能选择一种渲染方式
+  drawText(this.ctx);
+  drawWithState(this.ctx);
+}
+
+ngOnDestroy(): void {
+  window.cancelAnimationFrame(this.anim);
+}
+
+function drawText(ctx: R2D) {
+  const renderList = [
+    "CanvasRenderingContext2D",
+    "WebGLRenderingContext",
+    "WebGL2RenderingContext",
+    "ImageBitmapRenderingContext"
+  ];
+  ctx.font = "24px Roboto";
+  for (let i = 0; i < renderList.length; i++) {
+    ctx.fillText(renderList[i], 20, 50 * i + 200);
+  }
+}
+
+/**
+ * ctx.save() 将当前的context状态保存到栈中, 方便隔离
+ * @param ctx R2D
+ */
+function drawWithState(ctx: R2D) {
+  // 保存默认状态
+  ctx.save();
+  ctx.fillStyle = "#db0f2c";
+  ctx.fillRect(0, 0, 50, 50);
+  // 保存状态 1 红色
+  ctx.save();
+  // 改变状态 2 蓝色
+  ctx.fillStyle = "#09F";
+  ctx.fillRect(50, 0, 50, 50);
+  // 保存状态 2 蓝色
+  ctx.save();
+  // 改变颜色 3
+  ctx.fillStyle = "#f08300";
+  ctx.globalAlpha = 0.5;
+  ctx.fillRect(100, 0, 50, 50);
+  // 恢复到状态 2 蓝色
+  ctx.restore();
+  ctx.fillRect(150, 0, 50, 50);
+  // 恢复到状态 1 红色
+  ctx.restore();
+  ctx.fillRect(200, 0, 50, 50);
+  // 恢复到默认状态
+  ctx.restore();
+}
+
 /**
  * 初始化2D Context
  * @param canvas HTMLCanvasElement
@@ -24,15 +79,6 @@ ngAfterViewInit(): void {
   // this.gl2 = this.canvas.getContext("webgl2");
   // this.bMap = this.canvas.getContext("bitmaprenderer");
   drawText(this.ctx);
-}
-
-function drawText(ctx: R2D) {
-  const renderList = ["CanvasRenderingContext2D", "WebGLRenderingContext",
-                      "WebGL2RenderingContext", "ImageBitmapRenderingContext"];
-  ctx.font = "24px Roboto";
-  for (let i = 0; i < renderList.length; i++) {
-    ctx.fillText(renderList[i], 20, 50 * (i + 1));
-  }
 }
 
 export enum ContextID {
@@ -59,7 +105,6 @@ export interface CanvasOption {
     | ImageBitmapRenderingContextSettings
     | WebGLContextAttributes;
 }
-
 `;
 
 export const HTML_CODE = `
