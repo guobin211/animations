@@ -1,1 +1,21 @@
-<p>canvas-image works!</p>
+<div class="page">
+  <div class="title">
+    <h1>Canvas Image 绘制图像</h1>
+  </div>
+  <div class="row">
+    <div class="left">
+      <canvas width="500" height="500" #canvasElementRef>
+        your browser not support canvas!
+      </canvas>
+      <h1></h1>
+      <img src="assets/img/twitter.png" alt="twitter" width="80"/>
+      <img src="assets/img/instagram-sketched.png" alt="instagram-sketched" width="80"/>
+    </div>
+    <div class="right">
+      <app-my-tabs>
+        <lib-ngx-prism class="ts" [code]="tsCode"></lib-ngx-prism>
+        <lib-ngx-prism class="html" [code]="htmlCode" lang="html"></lib-ngx-prism>
+      </app-my-tabs>
+    </div>
+  </div>
+</div>

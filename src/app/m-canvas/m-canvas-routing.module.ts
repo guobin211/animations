@@ -10,12 +10,14 @@ import { BallAnimComponent } from "./ball-anim/ball-anim.component";
 import { BezierComponent } from "./bezier/bezier.component";
 import { RoundProgressComponent } from "./round-progress/round-progress.component";
 import { ScrollTextComponent } from "./scroll-text/scroll-text.component";
+import { CanvasTransformComponent } from "./canvas-transform/canvas-transform.component";
 
 export const canvasRoutes: Routes = [
   { path: "", redirectTo: "canvas", pathMatch: "full" },
   { path: "canvas", component: CanvasComponent, data: { name: "Canvas" } },
   { path: "context", component: CanvasContextComponent, data: { name: "Canvas Context" } },
   { path: "renderer", component: CanvasRendererComponent, data: { name: "Canvas Render" } },
+  { path: "transform", component: CanvasTransformComponent, data: { name: "Canvas Transform" } },
   { path: "image", component: CanvasImageComponent, data: { name: "Canvas Image" } },
   { path: "webgl", component: CanvasWebGlComponent, data: { name: "Canvas WebGL" } },
   { path: "bill", component: BilliardsComponent, data: { name: "桌球运动" } },

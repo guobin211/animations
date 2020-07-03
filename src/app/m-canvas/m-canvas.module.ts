@@ -12,6 +12,7 @@ import { BallAnimComponent } from "./ball-anim/ball-anim.component";
 import { BezierComponent } from "./bezier/bezier.component";
 import { RoundProgressComponent } from "./round-progress/round-progress.component";
 import { ScrollTextComponent } from "./scroll-text/scroll-text.component";
+import { CanvasTransformComponent } from './canvas-transform/canvas-transform.component';
 
 @NgModule({
   declarations: [
@@ -25,6 +26,7 @@ import { ScrollTextComponent } from "./scroll-text/scroll-text.component";
     BezierComponent,
     RoundProgressComponent,
     ScrollTextComponent,
+    CanvasTransformComponent,
   ],
   imports: [CommonModule, MCanvasRoutingModule, SharedModule],
 })
