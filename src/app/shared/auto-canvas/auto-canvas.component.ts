@@ -14,6 +14,8 @@ export class AutoCanvasComponent implements OnDestroy {
   htmlCode = "";
   cssCode = "";
 
+  constructor() {}
+
   initCanvas(canvas: HTMLCanvasElement) {
     this.canvas = canvas;
     this.ctx = Canvas.initCtx(this.canvas).ctx;

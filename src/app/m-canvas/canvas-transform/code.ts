@@ -1,26 +1,9 @@
-import { AfterViewInit, Component } from "@angular/core";
-import { R2D } from "../../../typings";
-import { AutoCanvasComponent } from "../../shared/auto-canvas/auto-canvas.component";
-import { HTML_CODE, TS_CODE } from "./code";
+/**
+ * code.ts
+ * @author GuoBin 2020-07-03
+ */
 
-@Component({
-  selector: "app-canvas-transform",
-  templateUrl: "./canvas-transform.component.html",
-  styleUrls: ["./canvas-transform.component.scss"]
-})
-export class CanvasTransformComponent extends AutoCanvasComponent implements AfterViewInit {
-  constructor() {
-    super();
-    this.tsCode = TS_CODE;
-    this.htmlCode = HTML_CODE;
-  }
-
-  ngAfterViewInit() {
-    draw(this.ctx);
-    drawRect(this.ctx);
-  }
-}
-
+export const TS_CODE = `
 /**
  * 绘制形变
  * transform(a, b, c, d, e, f) 缩放 + 倾斜 + 平移
@@ -69,3 +52,23 @@ function drawRect(ctx: R2D) {
   ctx.fillRect(0, 0, 100, 100);
   ctx.setTransform();
 }
+`;
+
+
+export const HTML_CODE = `
+<div class="page">
+  <div class="title">
+    <h1>Canvas Transform 形变</h1>
+  </div>
+  <div class="row">
+    <div class="left">
+      <lib-ngx-canvas (canvasInit)="initCanvas($event)"></lib-ngx-canvas>
+    </div>
+    <div class="right">
+      <app-my-tabs>
+        <lib-ngx-prism class="ts" [code]="tsCode"></lib-ngx-prism>
+      </app-my-tabs>
+    </div>
+  </div>
+</div>
+`;
