@@ -4,9 +4,9 @@ import { Canvas } from "../../core/_impl/Canvas";
 import { HTML_CODE, TS_CODE } from "./code";
 
 @Component({
-  selector: 'app-round-progress',
-  templateUrl: './round-progress.component.html',
-  styleUrls: ['./round-progress.component.scss']
+  selector: "app-round-progress",
+  templateUrl: "./round-progress.component.html",
+  styleUrls: ["./round-progress.component.scss"],
 })
 export class RoundProgressComponent implements AfterViewInit, OnDestroy {
   private canvas: HTMLCanvasElement;
@@ -74,11 +74,11 @@ function whiteCircle(context: CanvasRenderingContext2D, centerX: number, centerY
 }
 
 function buildCircle(
-    context: CanvasRenderingContext2D,
-    n: number,
-    centerX: number,
-    centerY: number,
-    rad: number
+  context: CanvasRenderingContext2D,
+  n: number,
+  centerX: number,
+  centerY: number,
+  rad: number
 ) {
   context.save();
   context.beginPath();

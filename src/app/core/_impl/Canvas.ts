@@ -69,7 +69,7 @@ export class Canvas implements BaseCanvas {
     const dpr = setUpDpr(canvas);
     const ctx = canvas.getContext("2d");
     ctx.scale(dpr, dpr);
-    return {ctx, dpr, width: canvas.width, height: canvas.height};
+    return { ctx, dpr, width: canvas.width, height: canvas.height };
   }
 
   /**
@@ -81,7 +81,7 @@ export class Canvas implements BaseCanvas {
     const dpr = setUpDpr(canvas);
     const ctx = canvas.getContext("2d", option);
     ctx.scale(dpr, dpr);
-    return {dpr, ctx};
+    return { dpr, ctx };
   }
 
   /**
@@ -92,7 +92,7 @@ export class Canvas implements BaseCanvas {
   static initGl(canvas: HTMLCanvasElement, option?: WebGLContextAttributes) {
     const dpr = setUpDpr(canvas);
     const gl: WebGLRenderingContext = canvas.getContext("webgl", option);
-    return {dpr, gl};
+    return { dpr, gl };
   }
 
   /**
@@ -103,7 +103,7 @@ export class Canvas implements BaseCanvas {
   static initGl2(canvas: HTMLCanvasElement, option?: WebGLContextAttributes) {
     const dpr = setUpDpr(canvas);
     const gl2: WebGL2RenderingContext = canvas.getContext("webgl2", option);
-    return {dpr, gl2};
+    return { dpr, gl2 };
   }
 
   /**
@@ -111,10 +111,12 @@ export class Canvas implements BaseCanvas {
    * @param canvas HTMLCanvasElement
    * @param option ImageBitmapRenderingContextSettings
    */
-  static initBitMapRenderer(canvas: HTMLCanvasElement,
-                            option?: ImageBitmapRenderingContextSettings) {
+  static initBitMapRenderer(
+    canvas: HTMLCanvasElement,
+    option?: ImageBitmapRenderingContextSettings
+  ) {
     const dpr = setUpDpr(canvas);
     const bMap: ImageBitmapRenderingContext = canvas.getContext("bitmaprenderer", option);
-    return {dpr, bMap};
+    return { dpr, bMap };
   }
 }

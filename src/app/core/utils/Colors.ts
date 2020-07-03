@@ -59,7 +59,8 @@ export class Colors {
    * 随机rgb颜色
    */
   static random(): string {
-    const i = Math.floor(Math.random() * 6), j = Math.floor(Math.random() * 6);
+    const i = Math.floor(Math.random() * 6),
+      j = Math.floor(Math.random() * 6);
     return "rgb(" + Math.floor(255 - 42.5 * i) + "," + Math.floor(255 - 42.5 * j) + ",0)";
   }
 }

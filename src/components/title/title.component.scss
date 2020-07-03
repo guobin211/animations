@@ -1,8 +1,30 @@
-h1,
-h2,
-h3,
-h4,
-h5,
-h6 {
-  color: cornflowerblue;
+.ng_h1, .ng_h2, .ng_h3, .ng_h4, .ng_h5, .ng_h6 {
+  font-family: 'Roboto', sans-serif;
+  font-weight: 600;
+  margin: 0;
+  display: inline-block;
+}
+
+.ng_h1 {
+  font-size: 32px;
+}
+
+.ng_h2 {
+  font-size: 24px;
+}
+
+.ng_h3 {
+  font-size: 18px;
+}
+
+.ng_h4 {
+  font-size: 16px;
+}
+
+.ng_h5 {
+  font-size: 14px;
+}
+
+.ng_h6 {
+  font-size: 12px;
 }

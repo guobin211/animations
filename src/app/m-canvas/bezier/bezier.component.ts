@@ -8,7 +8,7 @@ import { R2D } from "../../../typings";
 @Component({
   selector: "app-bezier",
   templateUrl: "./bezier.component.html",
-  styleUrls: ["./bezier.component.scss"]
+  styleUrls: ["./bezier.component.scss"],
 })
 export class BezierComponent extends CanvasHelper implements AfterViewInit, OnDestroy {
   tsCode = TS_CODE;
@@ -26,7 +26,7 @@ export class BezierComponent extends CanvasHelper implements AfterViewInit, OnDe
       strokeStyle: Colors.dark,
       startAngle: 0,
       endAngle: Math.PI + Math.PI / 2,
-      lineWidth: 3
+      lineWidth: 3,
     });
     sector.draw(this.ctx.ctx);
     drawMessage(this.ctx.ctx);
@@ -84,8 +84,8 @@ function drawPath(ctx: CanvasRenderingContext2D) {
 function drawFillStyle(ctx: R2D) {
   for (let i = 0; i < 6; i++) {
     for (let j = 0; j < 6; j++) {
-      ctx.fillStyle = "rgb(" + Math.floor(255 - 42.5 * i) + "," +
-          Math.floor(255 - 42.5 * j) + ",0)";
+      ctx.fillStyle =
+        "rgb(" + Math.floor(255 - 42.5 * i) + "," + Math.floor(255 - 42.5 * j) + ",0)";
       ctx.fillRect(j * 25 + 250, i * 25 + 250, 25, 25);
     }
   }

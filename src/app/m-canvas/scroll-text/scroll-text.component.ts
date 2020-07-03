@@ -3,9 +3,9 @@ import { CanvasHelper } from "../../helper/CanvasHelper";
 import { HTML_CODE, TS_CODE } from "./code";
 
 @Component({
-  selector: 'app-scroll-text',
-  templateUrl: './scroll-text.component.html',
-  styleUrls: ['./scroll-text.component.scss']
+  selector: "app-scroll-text",
+  templateUrl: "./scroll-text.component.html",
+  styleUrls: ["./scroll-text.component.scss"],
 })
 export class ScrollTextComponent extends CanvasHelper implements AfterViewInit, OnDestroy {
   anim: number;
@@ -32,18 +32,18 @@ export class ScrollTextComponent extends CanvasHelper implements AfterViewInit, 
  * @param callback void callback animate timer
  */
 function loadAnim(
-    canvas: HTMLCanvasElement,
-    context: CanvasRenderingContext2D,
-    callback: (n: number) => void
+  canvas: HTMLCanvasElement,
+  context: CanvasRenderingContext2D,
+  callback: (n: number) => void
 ) {
   const w = canvas.width,
-      h = canvas.height;
+    h = canvas.height;
   const words = `0123456789qwertyuiopasdfghjklzxcvbnm,./;\\[]QWERTYUIOP{}ASDFGHJHJKL:ZXCVBBNM<>?`;
   const clearColor = "rgba(0,0,0,.1)",
-      wordColor = "#33ff33",
-      wordsArr = words.split(""),
-      fontSize = 16,
-      col = w / fontSize;
+    wordColor = "#33ff33",
+    wordsArr = words.split(""),
+    fontSize = 16,
+    col = w / fontSize;
   const drops: number[] = [];
   for (let i = 0; i < col; i++) {
     drops[i] = 1;

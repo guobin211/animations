@@ -7,7 +7,7 @@ import { Colors } from "../../core/utils";
   selector: "app-canvas",
   templateUrl: "./canvas.component.html",
   styleUrls: ["./canvas.component.scss"],
-  changeDetection: ChangeDetectionStrategy.OnPush
+  changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class CanvasComponent implements AfterViewInit, OnDestroy {
   ts = TS_CODE;
@@ -37,7 +37,7 @@ export class CanvasComponent implements AfterViewInit, OnDestroy {
       this.canvas = element;
       this.dpr = dpr;
       // 选择渲染方式,更多的渲染方式/core/_impl/Canvas.ts
-      this.ctx = element.getContext("2d", {alpha: false, desynchronized: false});
+      this.ctx = element.getContext("2d", { alpha: false, desynchronized: false });
       this.ctx.scale(dpr, dpr);
     } else {
       console.error(`element not canvas!`);

@@ -23,30 +23,30 @@ export const Emoji = () => ({
 });
 
 Emoji.story = {
-  parameters: { notes: "My notes on a button with emojis" },
+  parameters: { notes: "Button中使用Emoji" },
 };
 
 export const WithSomeEmojiAndAction = () => ({
   component: Button,
   props: {
     text: "😀 😎 👍 💯",
-    onClick: action("This was clicked OMG"),
+    onClick: action("组件的事件"),
   },
 });
 
 WithSomeEmojiAndAction.story = {
-  name: "with some emoji and action",
-  parameters: { notes: "My notes on a button with emojis" },
+  name: "With Action",
+  parameters: { notes: "组件的笔记" },
 };
 
 export const ButtonWithLinkToAnotherStory = () => ({
   component: Button,
   props: {
-    text: "Go to Welcome Story",
+    text: "跳转到Welcome",
     onClick: linkTo("Welcome"),
   },
 });
 
 ButtonWithLinkToAnotherStory.story = {
-  name: "button with link to another story",
+  name: "Link跳转",
 };
