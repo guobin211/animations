@@ -6,8 +6,6 @@
 export interface BaseShape {
   x: number;
   y: number;
-  width: number;
-  height: number;
   /**
    * Shape 绘图方法
    * @param context CanvasRenderingContext2D

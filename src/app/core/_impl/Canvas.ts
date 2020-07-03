@@ -2,7 +2,7 @@
  * Canvas.ts
  * @author GuoBin 2020-07-02
  */
-import { BaseCanvas, BaseContext, BasePoint, CanvasOption } from "../_base";
+import { BaseCanvas, BaseContext, CanvasOption } from "../_base";
 import { animationSetup } from "../hooks";
 
 export class Canvas implements BaseCanvas {

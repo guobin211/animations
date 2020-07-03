@@ -3,13 +3,14 @@
  * @author GuoBin 2020-06-30
  */
 import { BaseBounds } from "../_base";
+import { Shape } from "../_impl/Shape";
 
 export interface BallOptions {
+  x: number;
+  y: number;
   rotation: number;
   radius: number;
   color: string;
-  x: number;
-  y: number;
   vx: number;
   vy: number;
   mass: number;
@@ -18,13 +19,15 @@ export interface BallOptions {
   lineWidth: number;
 }
 
-export class Ball {
-  readonly name = "Ball";
+/**
+ * 圆形
+ */
+export class Ball extends Shape implements BallOptions {
+  x = 0;
+  y = 0;
   rotation = 0;
   radius = 40;
   color = "#f08300";
-  x = 0;
-  y = 0;
   vx = 0;
   vy = 0;
   mass = 1;
@@ -33,6 +36,7 @@ export class Ball {
   lineWidth = 1;
 
   constructor(ball?: Partial<BallOptions>) {
+    super();
     if (ball) {
       for (const ballKey in ball) {
         if (ball.hasOwnProperty(ballKey)) {
@@ -63,7 +67,7 @@ export class Ball {
       x: this.x - this.radius,
       y: this.y - this.radius,
       width: this.radius * 2,
-      height: this.radius * 2
+      height: this.radius * 2,
     };
   }
 }

@@ -5,10 +5,12 @@
 import { BaseShape } from "../_base";
 
 export class Shape implements BaseShape {
-  x: number;
-  y: number;
-  height: number;
-  width: number;
+  x = 0;
+  y = 0;
+  // stork line width
+  lineWidth: number;
+  fillStyle: string;
+  strokeStyle: string;
 
   draw(context: CanvasRenderingContext2D): void {}
 }
