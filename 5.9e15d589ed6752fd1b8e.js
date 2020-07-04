@@ -1,0 +1,1 @@
+(window.webpackJsonp=window.webpackJsonp||[]).push([[5],{HMHs:function(n,o,t){"use strict";t.r(o),t.d(o,"MCaseModule",(function(){return a}));var e=t("ofXK"),r=t("MuEd"),s=t("PCNd"),u=t("fXoL");let a=(()=>{class n{}return n.\u0275mod=u.Pb({type:n}),n.\u0275inj=u.Ob({factory:function(o){return new(o||n)},imports:[[e.b,s.a,r.a]]}),n})()}}]);
