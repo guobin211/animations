@@ -1,4 +1,4 @@
-import { AfterViewInit, Component, OnInit } from "@angular/core";
+import { AfterViewInit, Component } from "@angular/core";
 import { AutoCanvasComponent } from "../../shared/auto-canvas/auto-canvas.component";
 import { CallBackNum, R2D } from "../../../typings";
 import { TS_CODE } from "./code";
