@@ -1,10 +1,12 @@
 import { Component, OnDestroy } from "@angular/core";
-import { CanvasEl, R2D } from "../../../typings";
+import { AnimateFn, CanvasEl, R2D } from "../../../typings";
 import { Canvas } from "../../core/_impl/Canvas";
+
+
 
 @Component({
   selector: "app-auto-canvas",
-  template: "",
+  template: ""
 })
 export class AutoCanvasComponent implements OnDestroy {
   ctx: R2D;
@@ -25,5 +27,17 @@ export class AutoCanvasComponent implements OnDestroy {
     if (this.anim) {
       window.cancelAnimationFrame(this.anim);
     }
+  }
+
+  // @before:
+  //  ngAfterViewInit() {
+  //     drawMoreBall(this.canvas, this.ctx, n => this.anim = n);
+  //  }
+  // @after:
+  //  ngAfterViewInit() {
+  //      this.useAnimateFn(drawMoreBall)
+  //  }
+  useAnimateFn(fn: AnimateFn) {
+    fn(this.canvas, this.ctx, n => this.anim = n);
   }
 }

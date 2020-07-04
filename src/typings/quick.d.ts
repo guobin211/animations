@@ -11,3 +11,6 @@ export type CanvasEl = HTMLCanvasElement;
 export type CallBackNum = (n: number) => void;
 export type CallBack<T> = (n: T) => void;
 export type CallBackAsync<T, E> = (n: T) => Promise<E>;
+
+// Canvas Animate 函数
+export type AnimateFn = (canvas: CanvasEl, context: R2D, callback: CallBackNum) => void;
