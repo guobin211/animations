@@ -83,3 +83,10 @@ a:active {
   padding-left: 30px;
   flex: 1;
 }
+
+.mat-expansion-panel-content{
+  .mat-expansion-panel-body {
+    padding: 0;
+  }
+}
+

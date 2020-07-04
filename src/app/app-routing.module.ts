@@ -9,6 +9,10 @@ const rootRoutes: Routes = [
     path: "canvas",
     loadChildren: () => import("./m-canvas/m-canvas.module").then((m) => m.MCanvasModule),
   },
+  {
+    path: "case",
+    loadChildren: () => import("./m-case/m-case.module").then((m) => m.MCaseModule),
+  },
   { path: "", redirectTo: "about", pathMatch: "full" },
   {
     path: "**",
