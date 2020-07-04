@@ -2,23 +2,10 @@
  * Sector.ts 扇形或弧形
  * @author GuoBin 2020-07-02
  */
-import { Shape } from "../_impl/Shape";
-import { mapperTo } from "../utils";
-
-export interface BaseSector {
-  x: number;
-  y: number;
-  startAngle: number;
-  endAngle: number;
-  strokeStyle: string;
-  fillStyle: string;
-  radius: number;
-  anticlockwise: boolean;
-  lineWidth: number;
-}
+import { BaseShape } from "../_base";
 
 // 扇形或弧形
-export class Sector extends Shape implements BaseSector {
+export class Sector extends BaseShape {
   // 逆时针
   anticlockwise = false;
   // 半径20
@@ -27,12 +14,9 @@ export class Sector extends Shape implements BaseSector {
   startAngle = 0;
   // 终止角度 PI 半圆
   endAngle = Math.PI;
-
-  constructor(option?: Partial<BaseSector>) {
+  constructor(option?: Partial<Sector>) {
     super();
-    if (option) {
-      mapperTo<Partial<BaseSector>, Sector>(option, this);
-    }
+    Object.assign(this, option);
   }
 
   draw(context: CanvasRenderingContext2D) {
@@ -44,6 +28,9 @@ export class Sector extends Shape implements BaseSector {
     context.arc(this.x, this.y, this.radius, this.startAngle, this.endAngle, this.anticlockwise);
     context.fill();
     context.stroke();
-    console.log("fill");
+    context.restore();
+  }
+
+  remove(): void {
   }
 }

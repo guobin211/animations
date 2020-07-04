@@ -2,48 +2,29 @@
  * Ball.ts
  * @author GuoBin 2020-06-30
  */
-import { BaseBounds } from "../_base";
-import { Shape } from "../_impl/Shape";
-
-export interface BallOptions {
-  x: number;
-  y: number;
-  rotation: number;
-  radius: number;
-  color: string;
-  vx: number;
-  vy: number;
-  mass: number;
-  scaleX: number;
-  scaleY: number;
-  lineWidth: number;
-}
+import { BaseBounds, BaseShape } from "../_base";
 
 /**
  * 圆形
  */
-export class Ball extends Shape implements BallOptions {
-  x = 0;
-  y = 0;
+export class Ball extends BaseShape {
+  // 旋转 0 —— Math.PI * 2
   rotation = 0;
+  // 半径
   radius = 40;
-  color = "#f08300";
+  color = "#dcdcdc";
+  // x轴偏移
   vx = 0;
+  // y轴偏移
   vy = 0;
   mass = 1;
+  // x轴缩放
   scaleX = 1;
+  // y轴缩放
   scaleY = 1;
-  lineWidth = 1;
-
-  constructor(ball?: Partial<BallOptions>) {
+  constructor(ball?: Partial<Ball>) {
     super();
-    if (ball) {
-      for (const ballKey in ball) {
-        if (ball.hasOwnProperty(ballKey)) {
-          this[ballKey] = ball[ballKey];
-        }
-      }
-    }
+    Object.assign(this, ball);
   }
 
   draw(context): void {
@@ -83,4 +64,8 @@ export class Ball extends Shape implements BallOptions {
     this.vy *= multiplication;
     this.vy += addition;
   }
+
+  remove(): void {
+  }
 }
+

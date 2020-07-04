@@ -2,30 +2,22 @@
  * Rect.ts
  * @author GuoBin 2020-07-02
  */
-import { Shape } from "../_impl/Shape";
-import { mapperTo } from "../utils";
+import { BaseShape } from "../_base";
 
-export interface BaseRect {
-  width: number;
-  height: number;
-  x: number;
-  y: number;
-  radius: number;
-}
-
-export class Rect extends Shape implements BaseRect {
-  height: number;
-  radius: number;
-  width: number;
-
-  constructor(options?: Partial<BaseRect>) {
+export class Rect extends BaseShape {
+  height = 100;
+  width = 100;
+  // 圆角半径
+  radius = 20;
+  constructor(rect?: Partial<Rect>) {
     super();
-    if (options) {
-      mapperTo(options, this);
-    }
+    Object.assign(this, rect);
   }
 
-  static roundedRect(
+  /**
+   * 绘制圆角矩形
+   */
+  static drawRoundedRect(
     ctx: CanvasRenderingContext2D,
     x: number,
     y: number,
@@ -48,9 +40,10 @@ export class Rect extends Shape implements BaseRect {
 
   draw(context: CanvasRenderingContext2D) {
     context.save();
-    context.fillStyle = this.fillStyle;
-    context.strokeStyle = this.strokeStyle;
-    Rect.roundedRect(context, this.x, this.y, this.width, this.height, this.radius);
+    Rect.drawRoundedRect(context, this.x, this.y, this.width, this.height, this.radius);
     context.restore();
+  }
+
+  remove(): void {
   }
 }

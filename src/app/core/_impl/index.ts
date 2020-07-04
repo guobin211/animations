@@ -3,4 +3,6 @@
  * @author GuoBin 2020-06-30
  */
 
-export * from "../_base/BaseShape";
+export * from "./Canvas";
+export * from "./Capture";
+
