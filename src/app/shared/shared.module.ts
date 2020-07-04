@@ -1,5 +1,6 @@
 import { NgModule } from "@angular/core";
 import { CommonModule } from "@angular/common";
+import { MatExpansionModule } from "@angular/material/expansion";
 import { NgxCanvasModule } from "ngx-canvas";
 import { NgxLocalModule, NgxLocalService } from "ngx-local";
 import { NgxPrismModule } from "ngx-prism";
@@ -32,6 +33,7 @@ import { PageAboutComponent } from "./page-about/page-about.component";
     MatTabsModule,
     MatGridListModule,
     MatButtonModule,
+    MatExpansionModule
   ],
   providers: [NgxLocalService],
   exports: [

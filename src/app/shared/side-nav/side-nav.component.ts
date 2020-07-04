@@ -1,5 +1,5 @@
 import { ChangeDetectionStrategy, Component, OnInit } from "@angular/core";
-import { SideListData } from "../../models/_impl";
+import { SideData, SideListData } from "../../models/_impl";
 
 @Component({
   selector: "app-side-nav",
@@ -8,7 +8,7 @@ import { SideListData } from "../../models/_impl";
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class SideNavComponent implements OnInit {
-  listData = [];
+  listData: SideData[] = [];
 
   constructor() {
     this.listData = SideListData;
