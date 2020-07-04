@@ -1,17 +1,12 @@
-import { AfterViewInit, Component } from "@angular/core";
-import { AutoCanvasComponent } from "../../shared/auto-canvas/auto-canvas.component";
-import { CanvasEl, R2D } from "../../../typings";
-import { TS_CODE } from "./code";
+/**
+ * code.ts
+ * @author GuoBin 2020-07-04
+ */
 
-@Component({
-  selector: "app-erase",
-  templateUrl: "./erase.component.html",
-  styles: [],
-})
+export const TS_CODE = `
 export class EraseComponent extends AutoCanvasComponent implements AfterViewInit {
   constructor() {
     super();
-    this.tsCode = TS_CODE;
   }
 
   ngAfterViewInit() {
@@ -31,24 +26,20 @@ export class EraseComponent extends AutoCanvasComponent implements AfterViewInit
         isPressed: true,
       };
     });
-    canvas.addEventListener(
-      "touchmove",
-      (e: any) => {
-        e.preventDefault();
-        e.stopPropagation();
-        e = e.changedTouches[0] || e.touches[0];
-        if (touch.isPressed) {
-          let newV = {
-            x: e.pageX - left,
-            y: e.pageY - top,
-          };
-          drawEraser(touch, newV, ctx);
-          touch.x = newV.x;
-          touch.y = newV.y;
-        }
-      },
-      { passive: true }
-    );
+    canvas.addEventListener("touchmove", (e: any) => {
+      e.preventDefault();
+      e.stopPropagation();
+      e = e.changedTouches[0] || e.touches[0];
+      if (touch.isPressed) {
+        let newV = {
+          x: e.pageX - left,
+          y: e.pageY - top,
+        };
+        drawEraser(touch, newV, ctx);
+        touch.x = newV.x;
+        touch.y = newV.y;
+      }
+    });
     canvas.addEventListener("touchend", (e) => {
       e.preventDefault();
       e.stopPropagation();
@@ -61,12 +52,6 @@ export class EraseComponent extends AutoCanvasComponent implements AfterViewInit
       setCanvas(res, canvas, ctx);
     });
   }
-}
-
-interface ImageData {
-  w: number;
-  h: number;
-  img: HTMLImageElement;
 }
 
 let imageData;
@@ -90,6 +75,7 @@ function drawLayer(url: string, canvas: CanvasEl): Promise<ImageData> {
 
 function setCanvas(obj: ImageData, canvas: CanvasEl, ctx: R2D) {
   const dpr = window.devicePixelRatio || 1;
+
   if (obj) {
     canvas.width = obj.w * dpr;
     canvas.height = obj.h * dpr;
@@ -131,3 +117,4 @@ function scratchArea(canvas: CanvasEl, ctx: R2D): number {
   }
   return (points / pixels) * 100;
 }
+`;
