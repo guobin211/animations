@@ -4,12 +4,9 @@
 
 ## Html5 Canvas Animation
 
-[https://guobin211.github.io/animations/][Home]
-
 ## 预览
 
-<img src="https://guobin211.github.io/animations/blob/master/_static/bg1.png" width="600px" alt
-="preview"/>
+![animations](/.github/bg1.png)
 
 ## 项目结构
 
