@@ -46,7 +46,7 @@ export class BilliardsComponent extends CanvasHelper implements AfterViewInit, O
         vy: Math.random() * 10 - 5,
       }),
       bounce = -1;
-
+    canvas.style.border = "1px solid #000";
     // 动画启动
     function drawAnim() {
       const n = window.requestAnimationFrame(drawAnim);
@@ -55,7 +55,7 @@ export class BilliardsComponent extends CanvasHelper implements AfterViewInit, O
       // context.clearRect(0, 0, canvas.width, canvas.height);
       // 用透明度fillRect添加长尾效果
       context.save();
-      context.fillStyle = "rgba(255,255,255,0.3)";
+      context.fillStyle = "rgba(255,255,255,0.2)";
       context.fillRect(0, 0, canvas.width, canvas.height);
       context.restore();
       ball0.x += ball0.vx;

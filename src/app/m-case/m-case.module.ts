@@ -7,9 +7,18 @@ import { SharedModule } from "../shared/shared.module";
 import { KeyboardActionComponent } from "./keyboard-action/keyboard-action.component";
 import { EraseComponent } from "./erase/erase.component";
 import { BarrageComponent } from "./barrage/barrage.component";
+import { GravityComponent } from "./gravity/gravity.component";
+import { MovingComponent } from "./moving/moving.component";
 
 @NgModule({
-  declarations: [BouncingComponent, KeyboardActionComponent, EraseComponent, BarrageComponent],
+  declarations: [
+    BouncingComponent,
+    KeyboardActionComponent,
+    EraseComponent,
+    BarrageComponent,
+    GravityComponent,
+    MovingComponent,
+  ],
   imports: [CommonModule, SharedModule, MCaseRoutingModule],
 })
 export class MCaseModule {}

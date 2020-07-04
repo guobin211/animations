@@ -1,6 +1,6 @@
 import { Component, OnDestroy } from "@angular/core";
 import { AnimateFn, CanvasEl, R2D } from "../../../typings";
-import { Canvas } from "../../core/_impl/Canvas";
+import { Canvas } from "../../core/_impl";
 
 @Component({
   selector: "app-auto-canvas",

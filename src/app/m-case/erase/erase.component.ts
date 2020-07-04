@@ -16,33 +16,30 @@ export class EraseComponent extends AutoCanvasComponent implements AfterViewInit
 
   ngAfterViewInit() {
     const { canvas, ctx } = this;
-    const boundingRect = canvas.getBoundingClientRect();
-    const left = boundingRect.left + window.scrollX;
-    const top = boundingRect.top + window.scrollY;
     canvas.style.background = "transparent";
     let touch;
-    canvas.addEventListener("touchstart", (e: any) => {
-      e.preventDefault();
-      e.stopPropagation();
-      e = e.changedTouches[0] || e.touches[0];
-      touch = {
-        x: e.pageX - left,
-        y: e.pageY - top,
-        isPressed: true,
-      };
-    });
+    canvas.addEventListener(
+      "touchstart",
+      (e: any) => {
+        e = e.changedTouches[0] || e.touches[0];
+        touch = {
+          x: e.pageX,
+          y: e.pageY,
+          isPressed: true,
+        };
+      },
+      { passive: true }
+    );
     canvas.addEventListener(
       "touchmove",
       (e: any) => {
-        e.preventDefault();
-        e.stopPropagation();
         e = e.changedTouches[0] || e.touches[0];
         if (touch.isPressed) {
           let newV = {
-            x: e.pageX - left,
-            y: e.pageY - top,
+            x: e.pageX,
+            y: e.pageY,
           };
-          drawEraser(touch, newV, ctx);
+          drawEraser(touch, newV, ctx, canvas);
           touch.x = newV.x;
           touch.y = newV.y;
         }
@@ -50,8 +47,6 @@ export class EraseComponent extends AutoCanvasComponent implements AfterViewInit
       { passive: true }
     );
     canvas.addEventListener("touchend", (e) => {
-      e.preventDefault();
-      e.stopPropagation();
       touch.isPressed = false;
       if (scratchArea(canvas, ctx) > 70) {
         ctx.clearRect(0, 0, canvas.width, canvas.height);
@@ -69,8 +64,7 @@ interface ImageData {
   img: HTMLImageElement;
 }
 
-let imageData;
-let pixels: number;
+let pixels: number, left: number, top: number;
 
 function drawLayer(url: string, canvas: CanvasEl): Promise<ImageData> {
   return new Promise((resolve) => {
@@ -103,14 +97,17 @@ function setCanvas(obj: ImageData, canvas: CanvasEl, ctx: R2D) {
   }
 }
 
-function drawEraser(oldV, newV, ctx) {
+function drawEraser(oldV, newV, ctx, canvas) {
+  const boundingRect = canvas.getBoundingClientRect();
+  left = boundingRect.left + window.scrollX;
+  top = boundingRect.top + window.scrollY;
   ctx.save();
   ctx.globalCompositeOperation = "destination-out";
   ctx.lineWidth = 35;
   ctx.lineCap = "round";
   ctx.beginPath();
-  ctx.moveTo(oldV.x, oldV.y);
-  ctx.lineTo(newV.x, newV.y);
+  ctx.moveTo(oldV.x - left, oldV.y - top);
+  ctx.lineTo(newV.x - left, newV.y - top);
   ctx.stroke();
   ctx.closePath();
   ctx.restore();
@@ -118,7 +115,7 @@ function drawEraser(oldV, newV, ctx) {
 
 function scratchArea(canvas: CanvasEl, ctx: R2D): number {
   let points = 0;
-  imageData = ctx.getImageData(0, 0, canvas.width, canvas.height).data;
+  let imageData = ctx.getImageData(0, 0, canvas.width, canvas.height).data;
   for (let i = 0, len = imageData.length; i < len; i += 4) {
     if (
       imageData[i] === 0 &&
