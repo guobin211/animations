@@ -65,7 +65,5 @@ export class Ball extends BaseShape {
     this.vy += addition;
   }
 
-  remove(): void {
-  }
+  remove(): void {}
 }
-

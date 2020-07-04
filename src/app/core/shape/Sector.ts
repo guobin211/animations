@@ -31,6 +31,5 @@ export class Sector extends BaseShape {
     context.restore();
   }
 
-  remove(): void {
-  }
+  remove(): void {}
 }

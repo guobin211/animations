@@ -2,7 +2,6 @@
  * BaseShape.ts 图形抽象类
  * @author GuoBin 2020-06-30
  */
-
 export abstract class BaseShape {
   id: string;
   x = 0;

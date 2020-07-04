@@ -1,4 +1,4 @@
-import { AfterViewInit, Component, OnDestroy, OnInit } from "@angular/core";
+import { AfterViewInit, Component, OnDestroy } from "@angular/core";
 import { CanvasHelper } from "../../helper/CanvasHelper";
 import { Ball } from "../../core/shape";
 import { Point } from "@angular/cdk/drag-drop";

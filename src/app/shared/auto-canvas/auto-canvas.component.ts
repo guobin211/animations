@@ -2,11 +2,9 @@ import { Component, OnDestroy } from "@angular/core";
 import { AnimateFn, CanvasEl, R2D } from "../../../typings";
 import { Canvas } from "../../core/_impl/Canvas";
 
-
-
 @Component({
   selector: "app-auto-canvas",
-  template: ""
+  template: "",
 })
 export class AutoCanvasComponent implements OnDestroy {
   ctx: R2D;
@@ -38,6 +36,6 @@ export class AutoCanvasComponent implements OnDestroy {
   //      this.useAnimateFn(drawMoreBall)
   //  }
   useAnimateFn(fn: AnimateFn) {
-    fn(this.canvas, this.ctx, n => this.anim = n);
+    fn(this.canvas, this.ctx, (n) => (this.anim = n));
   }
 }

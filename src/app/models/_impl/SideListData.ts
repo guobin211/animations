@@ -17,7 +17,7 @@ function transformRoutesToSide(routes: Routes, prefix: string = ""): SideItem[] 
   for (let i = 0; i < routes.length; i++) {
     const route = routes[i];
     if (route.data) {
-      const item = {name: route.data.name, path: prefix + route.path};
+      const item = { name: route.data.name, path: prefix + route.path };
       res.push(item);
     }
   }
@@ -25,9 +25,9 @@ function transformRoutesToSide(routes: Routes, prefix: string = ""): SideItem[] 
 }
 
 const sideData: SideData[] = [
-  {name: "关于", path: "/about"},
-  {name: "Canvas", path: "/canvas/", child: transformRoutesToSide(canvasRoutes)},
-  {name: "More Case", path: "/case/", child: transformRoutesToSide(caseRoutes)}
+  { name: "关于", path: "/about" },
+  { name: "Canvas", path: "/canvas/", child: transformRoutesToSide(canvasRoutes) },
+  { name: "More Case", path: "/case/", child: transformRoutesToSide(caseRoutes) },
 ];
 
 export interface SideData {

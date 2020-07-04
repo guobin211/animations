@@ -33,7 +33,7 @@ import { PageAboutComponent } from "./page-about/page-about.component";
     MatTabsModule,
     MatGridListModule,
     MatButtonModule,
-    MatExpansionModule
+    MatExpansionModule,
   ],
   providers: [NgxLocalService],
   exports: [

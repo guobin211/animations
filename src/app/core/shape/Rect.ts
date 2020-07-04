@@ -44,6 +44,5 @@ export class Rect extends BaseShape {
     context.restore();
   }
 
-  remove(): void {
-  }
+  remove(): void {}
 }
