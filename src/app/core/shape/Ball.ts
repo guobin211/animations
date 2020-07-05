@@ -13,9 +13,9 @@ export class Ball extends BaseShape {
   // 半径
   radius = 40;
   color = "#dcdcdc";
-  // x轴偏移
+  // x轴偏移 加速度
   vx = 0;
-  // y轴偏移
+  // y轴偏移 加速度
   vy = 0;
   mass = 1;
   // x轴缩放
