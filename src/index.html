@@ -7,12 +7,21 @@
   <meta name="viewport" content="width=device-width, initial-scale=1 user-scalable=0">
   <link rel="icon" type="image/x-icon" href="favicon.ico">
   <link rel="stylesheet" href="assets/prism/prism.css">
+  <script>
+    function CDN(path) {
+      const s = document.createElement("script");
+      s.src = path;
+      document.body.appendChild(s);
+    }
+  </script>
 </head>
 <body class="mat-typography">
-  <app-root></app-root>
-  <script src="assets/js/zepto.min.js"></script>
-  <script src="assets/js/localForage.min.js"></script>
-  <script src="assets/js/d3.v5.min.js"></script>
-  <script src="assets/prism/prism.js"></script>
+<app-root></app-root>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/bodymovin/5.7.0/lottie.min.js"
+        onError="CDN('assets/js/lottie.min.js')"></script>
+<script src="assets/js/zepto.min.js"></script>
+<script src="assets/js/localForage.min.js"></script>
+<script src="assets/js/d3.v5.min.js"></script>
+<script src="assets/prism/prism.js"></script>
 </body>
 </html>

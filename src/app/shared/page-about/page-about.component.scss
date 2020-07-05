@@ -1,0 +1,19 @@
+.warp {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: flex-start;
+  height: 80vh;
+  width: calc(100vw - 280px);
+  overflow-y: auto;
+
+  .lottie {
+    width: 300px;
+    height: 300px;
+    margin-right: 20px;
+    display: inline-flex;
+    position: relative;
+  }
+
+}
