@@ -39,6 +39,7 @@ const animateFn: AnimateFn = (canvas, context, callback) => {
     vy = -10,
     gravity = 1.2,
     bounce = -0.8;
+  // 计算canvas相对于window的偏移
   const offLeft = elementToLeft(canvas),
     offTop = elementToTop(canvas);
   canvas.addEventListener(
@@ -58,7 +59,7 @@ const animateFn: AnimateFn = (canvas, context, callback) => {
     false
   );
 
-  function onMouseUp(event) {
+  function onMouseUp() {
     isMouseDown = false;
     canvas.removeEventListener("mouseup", onMouseUp, false);
     canvas.removeEventListener("mousemove", onMouseMove, false);
