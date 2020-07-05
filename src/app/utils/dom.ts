@@ -26,16 +26,16 @@ export function getPosition(element: HTMLElement) {
     if (el.tagName === "BODY") {
       let xScroll = el.scrollLeft || document.documentElement.scrollLeft;
       let yScroll = el.scrollTop || document.documentElement.scrollTop;
-      xPos += (el.offsetLeft - xScroll + el.clientLeft);
-      yPos += (el.offsetTop - yScroll + el.clientTop);
+      xPos += el.offsetLeft - xScroll + el.clientLeft;
+      yPos += el.offsetTop - yScroll + el.clientTop;
     } else {
-      xPos += (el.offsetLeft - el.scrollLeft + el.clientLeft);
-      yPos += (el.offsetTop - el.scrollTop + el.clientTop);
+      xPos += el.offsetLeft - el.scrollLeft + el.clientLeft;
+      yPos += el.offsetTop - el.scrollTop + el.clientTop;
     }
     el = el.offsetParent;
   }
   return {
     x: xPos,
-    y: yPos
+    y: yPos,
   };
 }
