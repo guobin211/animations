@@ -23,9 +23,10 @@ export class MovingComponent extends AutoCanvasComponent implements AfterViewIni
 }
 
 const animateFn: AnimateFn = (canvas, context, callback) => {
+  const dpr = window.devicePixelRatio || 1;
   const ball = new Ball({
-    x: canvas.width / 2,
-    y: canvas.height / 2,
+    x: canvas.width / dpr,
+    y: canvas.height / dpr,
     color: Colors.primary,
     radius: 30,
   });
@@ -72,10 +73,10 @@ const animateFn: AnimateFn = (canvas, context, callback) => {
   }
   // 计算高度弹性
   function checkBounds() {
-    const left = canvas.width,
+    const left = canvas.width / dpr,
       right = 0,
       top = 0,
-      bottom = canvas.height;
+      bottom = canvas.height / dpr;
     ball.x += vx;
     vy += gravity;
     ball.y += vy;

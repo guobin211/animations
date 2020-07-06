@@ -5,7 +5,7 @@ import { HTML_CODE, TS_CODE } from "./code";
 
 @Component({
   selector: "app-round-progress",
-  templateUrl: "./round-progress.component.html",
+  templateUrl: "./round-progress.component.html"
 })
 export class RoundProgressComponent implements AfterViewInit, OnDestroy {
   private canvas: HTMLCanvasElement;
@@ -32,10 +32,11 @@ export class RoundProgressComponent implements AfterViewInit, OnDestroy {
 }
 
 function initAnimate(canvas: HTMLCanvasElement, ctx: BaseContext, callback: (v: number) => void) {
+  const dpr = window.devicePixelRatio || 1;
   let speed = 0.1;
   const rad = (Math.PI * 2) / 100;
-  const w = ctx.width / 2;
-  const h = ctx.height / 2;
+  const w = ctx.width / (dpr * 2);
+  const h = ctx.height / (dpr * 2);
 
   function drawFrame() {
     const n = window.requestAnimationFrame(drawFrame);
@@ -73,11 +74,11 @@ function whiteCircle(context: CanvasRenderingContext2D, centerX: number, centerY
 }
 
 function buildCircle(
-  context: CanvasRenderingContext2D,
-  n: number,
-  centerX: number,
-  centerY: number,
-  rad: number
+    context: CanvasRenderingContext2D,
+    n: number,
+    centerX: number,
+    centerY: number,
+    rad: number
 ) {
   context.save();
   context.beginPath();
