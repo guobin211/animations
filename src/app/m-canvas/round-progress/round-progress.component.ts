@@ -1,6 +1,6 @@
 import { AfterViewInit, Component, OnDestroy } from "@angular/core";
 import { BaseContext } from "../../core/_base";
-import { Canvas } from "../../core/_impl/Canvas";
+import { Canvas } from "../../core/_impl";
 import { HTML_CODE, TS_CODE } from "./code";
 
 @Component({
