@@ -4,6 +4,7 @@ import { TitleComponent } from "./title/title.component";
 
 @NgModule({
   declarations: [TitleComponent],
-  imports: [CommonModule],
+  imports: [CommonModule]
 })
-export class ComponentsModule {}
+export class ComponentsModule {
+}
