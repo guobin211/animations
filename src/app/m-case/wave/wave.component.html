@@ -1,0 +1,25 @@
+<div class="page">
+  <div class="title">
+    <h1>Wave</h1>
+  </div>
+  <div class="row">
+    <div class="left">
+      <lib-ngx-canvas (canvasInit)="initCanvas($event)"></lib-ngx-canvas>
+      <div>
+        <button mat-raised-button color="accent" (click)="handleClick('speed+')">Speed+</button>
+        <button mat-raised-button color="accent" (click)="handleClick('speed-')">Speed-</button>
+        <button mat-raised-button color="accent" (click)="handleClick('height+')">Height+</button>
+        <button mat-raised-button color="accent" (click)="handleClick('height-')">Height-</button>
+        <button mat-raised-button color="accent" (click)="handleClick('width+')">Width+</button>
+        <button mat-raised-button color="accent" (click)="handleClick('width-')">Width-</button>
+      </div>
+    </div>
+    <div class="right">
+      <app-my-tabs>
+        <lib-ngx-prism class="ts" [code]="tsCode"></lib-ngx-prism>
+        <lib-ngx-prism class="html" [code]="htmlCode" lang="html"></lib-ngx-prism>
+        <lib-ngx-prism class="css" [code]="cssCode" lang="css"></lib-ngx-prism>
+      </app-my-tabs>
+    </div>
+  </div>
+</div>

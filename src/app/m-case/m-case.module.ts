@@ -1,6 +1,5 @@
 import { NgModule } from "@angular/core";
 import { CommonModule } from "@angular/common";
-
 import { MCaseRoutingModule } from "./m-case-routing.module";
 import { BouncingComponent } from "./bouncing/bouncing.component";
 import { SharedModule } from "../shared/shared.module";
@@ -9,6 +8,7 @@ import { EraseComponent } from "./erase/erase.component";
 import { BarrageComponent } from "./barrage/barrage.component";
 import { GravityComponent } from "./gravity/gravity.component";
 import { MovingComponent } from "./moving/moving.component";
+import { WaveComponent } from "./wave/wave.component";
 
 @NgModule({
   declarations: [
@@ -18,6 +18,7 @@ import { MovingComponent } from "./moving/moving.component";
     BarrageComponent,
     GravityComponent,
     MovingComponent,
+    WaveComponent,
   ],
   imports: [CommonModule, SharedModule, MCaseRoutingModule],
 })
