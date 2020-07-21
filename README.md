@@ -1,12 +1,16 @@
 # Animations
 
+## Preview
+
+[https://guobin211.github.io/animations][Animations]
+
 前端动画，CSS3、Canvas、Svg 等
 
 ## Html5 Canvas Animation
 
 ## 预览
 
-![animations](/.github/bg1.png)
+<img src="/.github/bg1.png" width="762px" height="auto" alt="animations"/>
 
 ## 项目结构
 
@@ -21,3 +25,6 @@
 ```
 
 [Home]: https://guobin211.github.io/animations/
+
+
+[Animations]: https://guobin211.github.io/animations
