@@ -40,6 +40,6 @@ export class PageAboutComponent implements AfterViewInit {
       loop: true,
       autoplay: true,
       name: "Lottie Animate",
-    })
+    });
   }
 }
